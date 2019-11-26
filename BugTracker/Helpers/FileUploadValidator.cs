@@ -37,7 +37,8 @@ namespace BugTracker.Helpers
 
             var maxSize = WebConfigurationManager.AppSettings["MaxFileSize"];
             var minSize = WebConfigurationManager.AppSettings["MinFileSize"];
-            if (file.ContentLength > Convert.ToInt32(maxSize) || file.ContentLength < Convert.ToInt32(minSize)) return false;
+            if (file.ContentLength > Convert.ToInt32(maxSize) || file.ContentLength < Convert.ToInt32(minSize))
+            return false;
 
             try
             {

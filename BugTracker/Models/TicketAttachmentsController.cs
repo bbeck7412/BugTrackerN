@@ -39,7 +39,7 @@ namespace BugTracker.Models
         }
 
         // GET: TicketAttachments/Create
-        public ActionResult Create(int id)
+        public ActionResult Create( int id )
         {
             var attachment = new TicketAttachment
             {
@@ -57,8 +57,7 @@ namespace BugTracker.Models
         {
             if (ModelState.IsValid)
             {
-                ticketAttachment.Created = DateTime.Now;
-                ticketAttachment.UserId = User.Identity.GetUserId();
+                
                 
                 if (file != null)
                 {
@@ -69,12 +68,16 @@ namespace BugTracker.Models
                         justFileName = StringUtilities.URLFriendly(justFileName);
                         fileName = $"{justFileName}_{DateTime.Now.Ticks}{Path.GetExtension(fileName)}";
                         file.SaveAs(Path.Combine(Server.MapPath("~/Uploads/"), fileName));
+
                         ticketAttachment.FilePath = "/Uploads/" + fileName;
+                        ticketAttachment.Created = DateTime.Now;
+                        ticketAttachment.UserId = User.Identity.GetUserId();
+
+                        db.TicketAttachments.Add(ticketAttachment);
+                        db.SaveChanges();
                     }
+                                     
                 }
-               
-                db.TicketAttachments.Add(ticketAttachment);
-                db.SaveChanges();
                 return RedirectToAction("Details","Ticket", new { id = ticketAttachment.TicketId });
             }
 
