@@ -339,6 +339,8 @@ Use search to find needed section.
                     </ul>
                 </li>
 
+
+
                 @*<li>
             <a href="inbox.html"><i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Outlook</span> <span class="badge pull-right inbox-badge margin-right-13">14</span></a>
         </li>*@
@@ -347,7 +349,7 @@ Use search to find needed section.
                     if (User.IsInRole("Admin") | User.IsInRole("Administrator"))
                     {
                         <li>
-                            <a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent"> Admin </span></a>
+                            <a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent"> Admin Actions </span></a>
                             <ul>
                                 <li>
                                     @Html.ActionLink("Manage Roles", "ManageRoles", "Admin")
@@ -362,7 +364,7 @@ Use search to find needed section.
                     if (User.IsInRole("ProjectManager"))
                     {
                         <li>
-                            <a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent"> Manager </span></a>
+                            <a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent"> Project Manager Actions </span></a>
                             <ul>
                                 <li>
                                     @Html.ActionLink("Project Assignment", "ManageProjectUsers", "Admin")
@@ -374,7 +376,7 @@ Use search to find needed section.
                     if (User.IsInRole("Developer"))
                     {
                         <li>
-                            <a href="#"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent"> Developer </span></a>
+                            <a href="#"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent"> Developer Actions </span></a>
                             <ul>
                                 <li>
                                     @*<a href="form-elements.html">Smart Form Elements</a>*@
@@ -386,7 +388,7 @@ Use search to find needed section.
                     if (User.IsInRole("Submitter"))
                     {
                         <li>
-                            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent"> Submitter </span></a>
+                            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent"> Submitter Actions </span></a>
                             <ul>
                                 <li>
                                     @*<a href="general-elements.html">General Elements</a>*@
@@ -396,6 +398,46 @@ Use search to find needed section.
                     }
 
                 }
+
+                <li>
+                    <a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent"> Tickets </span></a>
+                    <ul>
+                        <li>
+                            @Html.ActionLink("Ticket Index", "Index", "Tickets")
+                        </li>
+                   
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent"> Ticket History </span></a>
+                    <ul>
+                        <li>
+                            @Html.ActionLink("Ticket History", "Index", "TicketHistories")
+                        </li>
+                      
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent"> Ticket Notifications </span></a>
+                    <ul>
+                        <li>
+                            @Html.ActionLink("Ticket Notifications ", "Index", "TicketNotifications")
+                        </li>
+                   
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent"> Ticket Attachments </span></a>
+                    <ul>
+                        <li>
+                            @Html.ActionLink("Ticket Attachments", "Index", "TicketAttachments")
+                        </li>
+                  
+                    </ul>
+                </li>
 
 
 
