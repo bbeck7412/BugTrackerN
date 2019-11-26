@@ -25,7 +25,7 @@ namespace BugTracker.Helpers
 
             //Step 1: Determine my role
             var myRole = roleHelper.ListUserRoles(userId).FirstOrDefault();
-
+            #region Example of IF vs Switch statement
             ////Step 2: Use that role to build the appropriate set of Tickets
             ///
             /// If statement example 
@@ -47,8 +47,8 @@ namespace BugTracker.Helpers
             //{
             //    myTickets.AddRange(db.Tickets.Where(t => t.SubmitterId == userId));
             //}
-
-            switch(myRole)
+            #endregion
+            switch (myRole)
             {
                 case "Admin":
                 case "Administrator":
@@ -75,5 +75,8 @@ namespace BugTracker.Helpers
 
             return myTickets;
         }
+
+
+
     }
 }

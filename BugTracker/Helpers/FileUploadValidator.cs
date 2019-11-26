@@ -9,7 +9,7 @@ using System.Web.Configuration;
 
 namespace BugTracker.Helpers
 {
-    public class FileUploadValidator
+    public  class FileUploadValidator
     {
         public static bool IsWebFriendlyImage(HttpPostedFileBase file)
         {
