@@ -42,7 +42,7 @@ namespace BugTracker.Helpers
 
             try
             {
-                var allowedExtensions = WebConfigurationManager.AppSettings["AllowedExtensions"];
+                var allowedExtensions = WebConfigurationManager.AppSettings["AllowedExtension"];
                 var fileExt = Path.GetExtension(file.FileName);
                 return allowedExtensions.Contains(fileExt);
 
