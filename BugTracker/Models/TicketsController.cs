@@ -17,6 +17,7 @@ namespace BugTracker.Models
         private ApplicationDbContext db = new ApplicationDbContext();
         private TicketHelper ticketHelper = new TicketHelper();
         private TicketHistoryHelper auditHelper = new TicketHistoryHelper();
+        private NotificationHelper notificationHelper = new NotificationHelper(); 
 
        // GET: Tickets
         
@@ -45,19 +46,6 @@ namespace BugTracker.Models
             return View(ticket);
         }
 
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Ticket ticket = db.Tickets.Find(id);
-        //    if (ticket == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(ticket);
-        //}
 
         // GET: Tickets/Create
         [Authorize (Roles = "Submitter")]
@@ -156,6 +144,8 @@ namespace BugTracker.Models
                 //HistoryHelper decides whether a history record needs to be added...
 
                 auditHelper.RecordHistoricalChanges(oldTicket, newTicket);
+
+                notificationHelper.ManageNotifications(oldTicket, newTicket);
 
                 return RedirectToAction("Index", "Home");
             }

@@ -607,12 +607,10 @@
     <Content Include="Views\Admin\ManageProjectUsers.cshtml" />
     <Content Include="Views\Home\LandingPage.cshtml" />
     <Content Include="Views\Account\ProfilePage.cshtml" />
-<!--<<<<<<< Updated upstream -->
-    <None Include="Properties\PublishProfiles\BBeckBlog - Web Deploy.pubxml" />
-<!--======= -->
-    <Content Include="Views\Home\DemoLogin.cshtml" />
-<!-->>>>>>> Stashed changes -->
+    <!--<<<<<<< Updated upstream -->
+    <!--======= -->
     <None Include="Properties\PublishProfiles\BugZapperApplication - Web Deploy.pubxml" />
+    <!-->>>>>>> Stashed changes -->
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
