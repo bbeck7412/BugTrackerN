@@ -75,7 +75,7 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    <h1 style="color:#a90329" class="login-header-big">Bug Zapper Demo Roles</h1>
+                    <h1 align="center" style="color:#a90329" class="login-header-big">Bug Zapper Demo Roles</h1>
                     <div class="hero">
                         <div class="col-md-6">
                             @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
@@ -90,7 +90,7 @@
                                         </div>
                                     </header>
                                     <div class="panel-body">
-                                        <button id="demoLogin_button--" type="submit" class="btn btn-lg btn-danger" style="text-align" > Admin Login </button>
+                                        <button id="demoLogin_button--" type="submit" class="btn btn-lg btn-danger" style="text-align:center"> Admin Login </button>
                                     </div>
                                 </section>
 
@@ -116,52 +116,48 @@
                             }
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
-                                {
-                                    @Html.AntiForgeryToken()
-                                    @Html.Hidden("emailKey", "DemoDevEmail")
+                        @*<div class="row">*@
 
-                                    <section class="panel">
-                                        <header class="panel-heading bg-white">
-                                            <div class=" panel-heading-icon  mt-sm">
-                                                <img src="~/Images/femDev.jpg" />
-                                            </div>
-                                        </header>
-                                        <div class="panel-body">
-                                            <button id="demoLogin_button--" type="submit" class="btn btn-lg btn-danger"> Developer Login </button>
+                        @*</div>*@
+
+                        <div class="col-md-6">
+                            @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.Hidden("emailKey", "DemoDevEmail")
+
+                                <section class="panel">
+                                    <header class="panel-heading bg-white">
+                                        <div class=" panel-heading-icon  mt-sm">
+                                            <img src="~/Images/femDev.jpg" />
                                         </div>
-                                    </section>
-                                }
-                            </div>
-
-                            <div class="col-md-6">
-                                @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
-                                {
-                                    @Html.AntiForgeryToken()
-                                    @Html.Hidden("emailKey", "DemoSubEmail")
-
-                                    <section class="panel">
-                                        <header class="panel-heading bg-white">
-                                            <div class=" panel-heading-icon  mt-sm">
-                                                <img src="~/Images/Demosub.png" />
-                                            </div>
-                                        </header>
-                                        <div class="panel-body">
-                                            <button id="demoLogin_button--" type="submit" class="btn btn-lg btn-danger"> Submitter Login </button>
-                                        </div>
-                                    </section>
-                                }
-                            </div>
+                                    </header>
+                                    <div class="panel-body">
+                                        <button id="demoLogin_button--" type="submit" class="btn btn-lg btn-danger"> Developer Login </button>
+                                    </div>
+                                </section>
+                            }
                         </div>
 
+                        <div class="col-md-6">
+                            @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.Hidden("emailKey", "DemoSubEmail")
 
-
-                    </div>
-
-                   
-
+                                <section class="panel">
+                                    <header class="panel-heading bg-white">
+                                        <div class=" panel-heading-icon  mt-sm">
+                                            <img src="~/Images/Demosub.png" />
+                                        </div>
+                                    </header>
+                                    <div class="panel-body">
+                                        <button id="demoLogin_button--" type="submit" class="btn btn-lg btn-danger"> Submitter Login </button>
+                                    </div>
+                                </section>
+                            }
+                        </div>
+                    </div>  
                 </div>
 
                 <div class="col-md-6">
@@ -214,37 +210,12 @@
 
                         }
 
-
                     </div>
-
-                    @*<h5 class="text-center"> - Or sign in using -</h5>
-
-                    <ul class="list-inline text-center">
-                        <li>
-                            <a href="javascript:void(0);" class="btn btn-primary btn-circle"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);" class="btn btn-info btn-circle"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);" class="btn btn-warning btn-circle"><i class="fa fa-linkedin"></i></a>
-                        </li>
-                    </ul>*@
-
-            @*<div class="col-offset-6 col-md-6">*@
                     <br />
                     <br />
-                <h5 class="text-center"> - LOGO PLACEHOLDER -</h5>
 
                 <ul class="list-inline text-center">
-                    <li>
-                        <a href="javascript:void(0);" class="btn btn-primary btn-circle"><i class="fa fa-facebook"></i></a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" class="btn btn-info btn-circle"><i class="fa fa-twitter"></i></a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" class="btn btn-warning btn-circle"><i class="fa fa-linkedin"></i></a>
+                    <li>  <img src="~/Images/fa5cf97b-3bcf-423c-a765-4ffafabd5aad_200x200.png" />
                     </li>
                 </ul>
                 </div>
