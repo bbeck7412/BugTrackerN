@@ -180,7 +180,7 @@
                                     <label class="input">
                                         <i class="icon-append fa fa-user"></i>
                                         <input type="email" name="Email">
-                                        <b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> Please enter email address/username</b>
+                                        <b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> Please enter email address</b>
                                     </label>
                                 </section>
 
@@ -200,9 +200,9 @@
                                         <input type="password" name="PasswordConfirm">
                                         <b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Confirm your password</b>
                                     </label>
-                                    @*<div class="note">
-                                        <a href="forgotpassword.html">Forgot password?</a>
-                                    </div>*@
+                                    <div class="note">
+                                        <a href=@Url.Action("ForgotPassword","Account")>forgot password?</a>
+                                    </div>
                                     
                                 </section>
                             </fieldset>

@@ -37,12 +37,12 @@ namespace BugTracker.Helpers
             }
         }
 
-        public static async Task ComposeEmailAsync(ForgotPasswordViewModel model, string callbackUrl)
+        public static async Task ComposeEmailAsync(RegisterViewModel model, string callbackUrl)
         {
             try
             {
 
-                var senderEmail = $"Blog Admin<{ConfiguredEmail}>";
+                var senderEmail = $" Bug Tracker Team <{ConfiguredEmail}>";
                 var mailMsg = new MailMessage(senderEmail, model.Email)
                 {
                     Subject = "Confirm your account",
@@ -60,12 +60,12 @@ namespace BugTracker.Helpers
             }
         }
 
-        public static async Task ComposeEmailAsync(RegisterViewModel model, string callbackUrl)
+        public static async Task ComposeEmailAsync(ForgotPasswordViewModel model, string callbackUrl)
         {
             try
             {
 
-                var senderEmail = $"Blog Admin<{ConfiguredEmail}>";
+                var senderEmail = $" Bug Tracker Team <{ConfiguredEmail}>";
                 var mailMsg = new MailMessage(senderEmail, model.Email)
                 {
                     Subject = "Reset Password",
