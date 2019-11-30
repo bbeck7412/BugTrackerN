@@ -1,10 +1,10 @@
-﻿@model BugTracker.Models.DashboardViewModel
+﻿﻿@model BugTracker.Models.DashboardViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div id="content">
-    
+
     <div class="row">
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
             <h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i> Dashboard </h1>
@@ -21,11 +21,11 @@
                         <h5 style="color:#23c317"> Tickets <span class="txt-color-greenLight"> <a href=@Url.Action("Index","Tickets")> <i class="fa fa-ticket" style="color:#23c317"></i></a> &nbsp; @Model.Tickets.Count </span></h5>
                     </li>
 
-                    if (User.IsInRole("Admin")| User.IsInRole("Administrator") | User.IsInRole("ProjectManager"))
+                    if (User.IsInRole("Admin") | User.IsInRole("Administrator") | User.IsInRole("ProjectManager"))
                     {
-                    <li class="sparks-info">
-                        <h5 style="color:#2a46a0"> Users on projects <span class="txt-color-blue"> <a href=@Url.Action("ManageProjectUsers", "Admin")> <i class="fa fa-user" style="color:#2a46a0"></i></a> &nbsp; @Model.Users.Count </span></h5>
-                    </li>
+                        <li class="sparks-info">
+                            <h5 style="color:#2a46a0"> Users on projects <span class="txt-color-blue"> <a href=@Url.Action("ManageProjectUsers", "Admin")> <i class="fa fa-user" style="color:#2a46a0"></i></a> &nbsp; @Model.Users.Count </span></h5>
+                        </li>
                     }
                 }
 
@@ -79,7 +79,7 @@
                                         <th class="hasinput" style="width:17%">
                                             <input type="text" class="form-control" placeholder=" Project Name " />
                                         </th>
-                                        
+
                                         <th class="hasinput" style="width:18%">
                                             <div class="input-group">
                                                 <input class="form-control" placeholder=" Project Description " type="text">
@@ -126,7 +126,7 @@
                                             <td>@proj.Project.Created.Date.ToString("MM.dd.yyyy")</td>
                                             <td>@proj.Project.Users.Count()</td>
                                             <td>@proj.Project.Tickets.Count</td>
-                                            
+
                                         </tr>
                                     }
 
