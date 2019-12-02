@@ -260,6 +260,7 @@
     <Content Include="Content\img\jqueryui\ui-icons_f6cf3b_256x240.png" />
     <Content Include="Content\img\jqueryui\ui-icons_ffffff_256x240.png" />
     <Content Include="Content\img\loading.gif" />
+    <Content Include="Content\img\login.png" />
     <Content Include="Content\img\logo-blacknwhite.png" />
     <Content Include="Content\img\logo-blue.png" />
     <Content Include="Content\img\logo-o.png" />
@@ -357,6 +358,7 @@
     <Content Include="Scripts\app.min.js" />
     <Content Include="Scripts\bootstrap-slider.min.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\ckeditor.js" />
     <Content Include="Scripts\classie.js" />
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\fastclick.min.js" />
@@ -376,7 +378,6 @@
     <Content Include="Scripts\jquery.flot.resize.min.js" />
     <Content Include="Scripts\jquery.flot.time.min.js" />
     <Content Include="Scripts\jquery.flot.tooltip.min.js" />
-    <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.maskedinput.min.js" />
     <Content Include="Scripts\jquery.mb.browser.min.js" />
     <Content Include="Scripts\jquery.scrollUp.js" />
@@ -389,8 +390,10 @@
     <Content Include="Scripts\landing_bootstrap.min.js" />
     <Content Include="Scripts\login_script.js" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\morris.min.js" />
     <Content Include="Scripts\nivo-lightbox.min.js" />
     <Content Include="Scripts\pace.min.js" />
+    <Content Include="Scripts\raphael.min.js" />
     <Content Include="Scripts\register_scripts.js" />
     <Content Include="Scripts\select2.min.js" />
     <Content Include="Scripts\smart.chat.manager.min.js" />
