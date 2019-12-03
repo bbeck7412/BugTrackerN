@@ -22,7 +22,7 @@ namespace BugTracker.Controllers
         }
 
 
-
+        [Authorize]
         public ActionResult Index()
         {
             if (User.Identity.IsAuthenticated)
