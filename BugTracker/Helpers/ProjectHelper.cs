@@ -11,7 +11,77 @@ namespace BugTracker.Helpers
 {
     public class ProjectHelper
     {
-        ApplicationDbContext db = new ApplicationDbContext();
+       private ApplicationDbContext db = new ApplicationDbContext();
+        private RoleHelper roleHelper = new RoleHelper();
+
+
+        public List<Project> ListMyProjects()
+        {
+            var myProjects = new List<Project>();
+            var userId = HttpContext.Current.User.Identity.GetUserId();
+            var user = db.Users.Find(userId);
+
+            var myRole = roleHelper.ListUserRoles(userId).FirstOrDefault();
+            switch(myRole)
+            {
+                case "Admin":
+                case "Administrator":
+                    myProjects.AddRange(db.Projects);
+                    break;
+
+                case
+                    "ProjectManager":
+                    myProjects.AddRange(user.Projects.Where(p => p.Name == userId));
+                    break;
+
+                case
+                    "Developer":
+                    myProjects.AddRange(db.Projects.Where(p => p.Name == userId));
+                        break;
+
+                case
+                    "Submitter":
+                    myProjects.AddRange(db.Projects.Where(p => p.Name == userId));
+                    break;
+            }
+            return myProjects;
+        }
+
+        //public List<Ticket> ListMyTickets()
+        //{
+        //    var myTickets = new List<Ticket>();
+        //    var userId = HttpContext.Current.User.Identity.GetUserId();
+        //    var user = db.Users.Find(userId);
+
+        //    //Step 1: Determine my role
+        //    var myRole = roleHelper.ListUserRoles(userId).FirstOrDefault();
+        //    switch (myRole)
+        //    {
+        //        case "Admin":
+        //        case "Administrator":
+        //            myTickets.AddRange(db.Tickets);
+        //            break;
+
+        //        case
+        //        "ProjectManager":
+        //            myTickets.AddRange(user.Projects.SelectMany(p => p.Tickets));
+        //            break;
+
+        //        case
+        //        "Developer":
+        //            myTickets.AddRange(db.Tickets.Where(t => t.DeveloperId == userId));
+        //            break;
+
+        //        case
+        //        "Submitter":
+        //            myTickets.AddRange(db.Tickets.Where(t => t.SubmitterId == userId));
+        //            break;
+
+        //    }
+
+
+        //    return myTickets;
+        //}
 
         public bool IsUserOnProject(string userId, int projectId)
         {

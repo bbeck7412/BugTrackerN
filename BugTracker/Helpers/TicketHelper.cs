@@ -25,29 +25,6 @@ namespace BugTracker.Helpers
 
             //Step 1: Determine my role
             var myRole = roleHelper.ListUserRoles(userId).FirstOrDefault();
-            #region Example of IF vs Switch statement
-            ////Step 2: Use that role to build the appropriate set of Tickets
-            ///
-            /// If statement example 
-            /// 
-            //if (myRole == "Admin")
-            //{
-            //    myTickets.AddRange(db.Tickets);
-            //}
-            //else if (myRole == "ProjectManager")
-            //{
-
-            //    myTickets.AddRange(user.Projects.SelectMany(p => p.Tickets));
-            //}
-            //else if (myRole == "Developer")
-            //{
-            //    myTickets.AddRange(db.Tickets.Where(t => t.DeveloperId == userId));
-            //}
-            //else if (myRole == "Submitter")
-            //{
-            //    myTickets.AddRange(db.Tickets.Where(t => t.SubmitterId == userId));
-            //}
-            #endregion
             switch (myRole)
             {
                 case "Admin":
@@ -80,3 +57,26 @@ namespace BugTracker.Helpers
 
     }
 }
+            #region Example of IF vs Switch statement
+            ////Step 2: Use that role to build the appropriate set of Tickets
+            ///
+            /// If statement example 
+            /// 
+            //if (myRole == "Admin")
+            //{
+            //    myTickets.AddRange(db.Tickets);
+            //}
+            //else if (myRole == "ProjectManager")
+            //{
+
+            //    myTickets.AddRange(user.Projects.SelectMany(p => p.Tickets));
+            //}
+            //else if (myRole == "Developer")
+            //{
+            //    myTickets.AddRange(db.Tickets.Where(t => t.DeveloperId == userId));
+            //}
+            //else if (myRole == "Submitter")
+            //{
+            //    myTickets.AddRange(db.Tickets.Where(t => t.SubmitterId == userId));
+            //}
+            #endregion

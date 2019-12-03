@@ -325,6 +325,9 @@ Use search to find needed section.
                                 <li>
                                     @Html.ActionLink("Project Assignment", "ManageProjectUsers", "Admin")
                                 </li>
+                                <li>
+                                    @Html.ActionLink("Create New Project","Create","Projects")
+                                </li>
                             </ul>
                         </li>
                     }
@@ -347,7 +350,7 @@ Use search to find needed section.
                             <a href="#"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent"> Developer Actions </span></a>
                             <ul>
                                 <li>
-                                    @*<a href="form-elements.html">Smart Form Elements</a>*@
+                                    @Html.ActionLink("My Tickets","Index","Tickets")
                                 </li>
                             </ul>
                         </li>
@@ -359,7 +362,7 @@ Use search to find needed section.
                             <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent"> Submitter Actions </span></a>
                             <ul>
                                 <li>
-                                    @*<a href="general-elements.html">General Elements</a>*@
+                                    @Html.ActionLink("Create Ticket","Create","Tickets")
                                 </li>
                             </ul>
                         </li>

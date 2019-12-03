@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BugTracker.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -12,6 +13,7 @@ namespace BugTracker.Models
     public class ProjectsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private ProjectHelper projectHelper = new ProjectHelper();
 
         public ActionResult ManageProjectUsers()
         {

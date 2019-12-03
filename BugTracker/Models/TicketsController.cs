@@ -17,11 +17,11 @@ namespace BugTracker.Models
         private ApplicationDbContext db = new ApplicationDbContext();
         private TicketHelper ticketHelper = new TicketHelper();
         private TicketHistoryHelper auditHelper = new TicketHistoryHelper();
-        private NotificationHelper notificationHelper = new NotificationHelper(); 
+        private NotificationHelper notificationHelper = new NotificationHelper();
 
-       // GET: Tickets
-        
-        
+        // GET: Tickets
+
+
         public ActionResult Index()
         {
             //var tickets = db.Tickets.Include(t => t.Developer).Include(t => t.Project).Include(t => t.Submitter).Include(t => t.TicketPriority).Include(t => t.TicketStatus).Include(t => t.TicketType);
@@ -29,6 +29,7 @@ namespace BugTracker.Models
             //What role do I occupy  
             return View(ticketHelper.ListMyTickets());
         }
+
 
         // GET: Tickets/Details/5
 
