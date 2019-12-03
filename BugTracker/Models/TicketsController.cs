@@ -75,21 +75,6 @@ namespace BugTracker.Models
                 ticket.Created = DateTime.Now;
                 ticket.TicketStatusId = ticketHelper.SetDefaultTicketStatus();
 
-                //var Slug = StringUtilities.URLFriendly(ticket.Title);
-                //if (String.IsNullOrWhiteSpace(Slug))
-                //{
-                //    ModelState.AddModelError("Title", "Invalid Title");
-                //    return View(ticket);
-                //}
-                //if (db.Tickets.Any(c => c.Slug == Slug))
-                //{
-                //    ModelState.AddModelError("Title", "The title must be unique");
-                //    return View(ticket);
-                //}
-
-                //ticket.Slug = Slug;
-                //ticket.Created = DateTime.Now;
-
                 db.Tickets.Add(ticket);
                 db.SaveChanges();
                 return RedirectToAction("Index");
