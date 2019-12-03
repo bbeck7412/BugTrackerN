@@ -27,11 +27,6 @@
     <!-- SmartAdmin RTL Support  -->
     <link href="~/Content/smartadmin-rtl.min.css" rel="stylesheet" />
 
-    <!-- We recommend you use "your_style.css" to override SmartAdmin
-         specific styles this will also ensure you retrain your customization with each SmartAdmin update.
-    <link rel="stylesheet" type="text/css" media="screen" href="css/your_style.css"> -->
-
-
     <!-- FAVICONS -->
     <link rel="shortcut icon" href="~/Images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="~/Images/favicon.ico" type="image/x-icon">
@@ -101,6 +96,7 @@ Use search to find needed section.
             <!-- PLACE YOUR LOGO HERE -->
             <span id="logo"> <img src="~/Images/white_black - Copy.png" alt="SmartAdmin"> </span>
             <!-- END LOGO PLACEHOLDER -->
+
             <!-- Note: The activity badge color changes when clicked and resets the number to 0
             Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
             <span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> <b class="badge"> 21 </b> </span>
@@ -168,13 +164,6 @@ Use search to find needed section.
                 </li>
                 <li>
                     @Html.ActionLink("Ticket Index", "Index", "TicketNotifications")
-                </li>
-                <li>
-                    @*<a href="javascript:void(0);">Assesment Report for merchant account</a>*@
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a href="javascript:void(0);"><i class="fa fa-power-off"></i> Clear</a>
                 </li>
             </ul>
             <!-- end dropdown-menu-->
@@ -267,27 +256,7 @@ Use search to find needed section.
                 <span> <a href="javascript:void(0);" data-action="launchFullscreen" title="Full Screen"><i class="fa fa-arrows-alt"></i></a> </span>
             </div>
             <!-- end fullscreen button -->
-            <!-- #Voice Command: Start Speech -->
-            <div id="speech-btn" class="btn-header transparent pull-right hidden-sm hidden-xs">
-                <div>
-                    <a href="javascript:void(0)" title="Voice Command" data-action="voiceCommand"><i class="fa fa-microphone"></i></a>
-                    <div class="popover bottom">
-                        <div class="arrow"></div>
-                        <div class="popover-content">
-                            <h4 class="vc-title">Voice command activated <br><small>Please speak clearly into the mic</small></h4>
-                            <h4 class="vc-title-error text-center">
-                                <i class="fa fa-microphone-slash"></i> Voice command failed
-                                <br><small class="txt-color-red">Must <strong>"Allow"</strong> Microphone</small>
-                                <br><small class="txt-color-red">Must have <strong>Internet Connection</strong></small>
-                            </h4>
-                            <a href="javascript:void(0);" class="btn btn-success" onclick="commands.help()">See Commands</a>
-                            <a href="javascript:void(0);" class="btn bg-color-purple txt-color-white" onclick="$('#speech-btn .popover').fadeOut(50);">Close Popup</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end voice command -->
+
         <!-- end pulled right: nav area -->
 
     </header>
@@ -300,13 +269,13 @@ Use search to find needed section.
         <div class="login-info">
             <span>
                 <!-- User image size is adjusted inside CSS, it should stay as it -->
-
                 <a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
-                    @*<img src="~/Content/img/avatars/sunny.png" alt="me" class="online" />*@
+                    <img src="~/Content/img/avatars/sunny.png" alt="me" class="online" />
                     @*<img src="@UserHelper.GetAvatarPath" alt="..." class="img-circle profile-pic" />*@
 
-                    <span>
-                        john.doe
+                    <span style="font-size:50px;">
+                        @{ var user = (System.Security.Claims.ClaimsIdentity)User.Identity; }
+                        @Html.ActionLink("Hello " + user.FindFirstValue("DisplayName") + "!", "ProfilePage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
                     </span>
                     <i class="fa fa-angle-down"></i>
                 </a>
