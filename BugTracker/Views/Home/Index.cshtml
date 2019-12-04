@@ -76,18 +76,14 @@
                                 <thead>
                                     <tr>
                                         <th class="hasinput" style="width:17%">
-                                            <input type="text" class="form-control" placeholder=" Project Name " />
+                                           <input type="text" class="form-control" placeholder=" Project Name " />
                                         </th>
 
-                                        <th class="hasinput" style="width:18%">
-                                            <div class="input-group">
-                                                <input class="form-control" placeholder=" Project Description " type="text">
-                                                <span class="input-group-addon">
-                                                </span>
-                                            </div>
+                                        <th class="hasinput" style="width:17%">
+                                            <input type="text" class="form-control" placeholder=" Project Name " />  
                                         </th>
 
-                                        <th class="hasinput" style="width:16%">
+                                        <th class="hasinput" style="width:17%">
                                             <input type="text" class="form-control" placeholder=" Project Manager " />
                                         </th>
 
@@ -95,23 +91,22 @@
                                             <input type="text" class="form-control" placeholder=" Created Date " />
                                         </th>
 
-                                        <th class="hasinput icon-addon">
-                                            <input id="dateselect_filter" type="text" placeholder=" Users " class="form-control datepicker" data-dateformat="yy/mm/dd">
-                                            <label for="dateselect_filter" class="glyphicon glyphicon-calendar no-margin padding-top-15" rel="tooltip" title="" data-original-title="Filter Date"></label>
+                                        <th class="hasinput" style="width:17%">
+                                            <input type="text" class="form-control" placeholder=" Users on Project " />
                                         </th>
 
-                                        <th class="hasinput" style="width:16%">
-                                            <input type="text" class="form-control" placeholder=" Tickets " />
+                                        <th class="hasinput" style="width:17%">
+                                            <input type="text" class="form-control" placeholder=" Tickets on Project " />
                                         </th>
 
                                     </tr>
                                     <tr>
-                                        <th data-class="expand">Name</th>
+                                        <th data-class="expand"> Project Name</th>
                                         <th>Description</th>
                                         <th data-hide="phone"> Project Manager</th>
                                         <th data-hide="phone"> Created Date </th>
                                         <th data-hide="phone,tablet">  Users on Project </th>
-                                        <th data-hide="phone,tablet"> Tickets </th>
+                                        <th data-hide="phone,tablet"> Tickets on Project </th>
                                     </tr>
                                 </thead>
 
@@ -443,7 +438,7 @@
             });
 
             // custom toolbar
-            $("div.toolbar").html('<div class="text-right"><img src="img/logo.png" alt="SmartAdmin" style="width: 111px; margin-top: 3px; margin-right: 10px;"></div>');
+            //$("div.toolbar").html('<div class="text-right"><img src="img/logo.png" alt="SmartAdmin" style="width: 111px; margin-top: 3px; margin-right: 10px;"></div>');
 
             // Apply the filter
             $("#datatable_fixed_column thead th input[type=text]").on('keyup change', function () {
