@@ -11,7 +11,7 @@ namespace BugTracker.Helpers
 {
     public class ProjectHelper
     {
-       private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
         private RoleHelper roleHelper = new RoleHelper();
 
 
@@ -20,9 +20,10 @@ namespace BugTracker.Helpers
             var myProjects = new List<Project>();
             var userId = HttpContext.Current.User.Identity.GetUserId();
             var user = db.Users.Find(userId);
+            var projects = db.Projects;
 
             var myRole = roleHelper.ListUserRoles(userId).FirstOrDefault();
-            switch(myRole)
+            switch (myRole)
             {
                 case "Admin":
                 case "Administrator":
@@ -31,17 +32,14 @@ namespace BugTracker.Helpers
 
                 case
                     "ProjectManager":
-                    myProjects.AddRange(user.Projects.Where(p => p.Name == userId));
+                    myProjects.AddRange(db.Projects.Where(p => p.ProjectManagerId == userId));
                     break;
 
                 case
                     "Developer":
-                    myProjects.AddRange(db.Projects.Where(p => p.Name == userId));
-                        break;
-
                 case
                     "Submitter":
-                    myProjects.AddRange(db.Projects.Where(p => p.Name == userId));
+                    myProjects.AddRange(db.Projects.Where(p => p.Users.Select(uid => uid.Id).Contains(userId)));
                     break;
             }
             return myProjects;
@@ -98,9 +96,9 @@ namespace BugTracker.Helpers
             return (projects);
         }
 
-        public void AddUserToProject (string userId, int projectId)
+        public void AddUserToProject(string userId, int projectId)
         {
-            if (!IsUserOnProject(userId,projectId))
+            if (!IsUserOnProject(userId, projectId))
             {
                 Project proj = db.Projects.Find(projectId);
                 var newUser = db.Users.Find(userId);
@@ -110,9 +108,19 @@ namespace BugTracker.Helpers
             }
         }
 
+        public void AddProjectManagerToProject(string userId, int projectId)
+        {
+            Project proj = db.Projects.Find(projectId);
+            if (db.Users.Any(u => u.Id == userId) && proj != null)
+            {
+                proj.ProjectManagerId = userId;
+                db.SaveChanges();
+            }
+        }
+
         public void RemoveUserFromProject(string userId, int projectId)
         {
-            if(IsUserOnProject(userId, projectId))
+            if (IsUserOnProject(userId, projectId))
             {
                 Project proj = db.Projects.Find(projectId);
                 var delUser = db.Users.Find(userId);
@@ -123,11 +131,11 @@ namespace BugTracker.Helpers
             }
         }
 
-        public ICollection<ApplicationUser> UsersOnProject (int projectId)
+        public ICollection<ApplicationUser> UsersOnProject(int projectId)
         {
             return db.Projects.Find(projectId).Users;
         }
-        public ICollection<ApplicationUser> UsersNotOnProject (int projectId)
+        public ICollection<ApplicationUser> UsersNotOnProject(int projectId)
         {
             return db.Users.Where(m => m.Projects.All(p => p.Id != projectId)).ToList();
         }

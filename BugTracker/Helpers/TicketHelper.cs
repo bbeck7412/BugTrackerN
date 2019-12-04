@@ -34,7 +34,7 @@ namespace BugTracker.Helpers
 
                 case
                 "ProjectManager":
-                    myTickets.AddRange(user.Projects.SelectMany(p => p.Tickets));
+                    myTickets.AddRange(db.Projects.Where(p => p.ProjectManagerId == userId).SelectMany(p => p.Tickets));
                 break;
 
                 case

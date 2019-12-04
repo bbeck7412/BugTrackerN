@@ -26,7 +26,7 @@ namespace BugTracker.Models
         {
             if (User.Identity.IsAuthenticated)
             {
-                return View(db.Projects.ToList());
+                return View(projectHelper.ListMyProjects());
             }
             else
                 return RedirectToAction("Login", "Account");
@@ -101,7 +101,7 @@ namespace BugTracker.Models
             {
                 db.Entry(project).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
             return View(project);
         }
