@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BugTracker.Helpers;
+using BugTracker.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -7,109 +9,128 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
-namespace BugTracker.Models
+namespace BugTracker.Controllers
 {
-    public class TicketStatusController : Controller
+    public class ProjectsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private ProjectHelper projectHelper = new ProjectHelper();
 
-        // GET: TicketStatus
-        public ActionResult Index()
+        public ActionResult ManageProjectUsers()
         {
-            return View(db.TicketStatus.ToList());
+            return View("ManageProjectUsers");
         }
 
-        // GET: TicketStatus/Details/5
+        // GET: Projects
+        
+        public ActionResult Index()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                return View(projectHelper.ListMyProjects());
+            }
+            else
+                return RedirectToAction("Login", "Account");
+            
+        }
+
+        // GET: Projects/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TicketStatus ticketStatus = db.TicketStatus.Find(id);
-            if (ticketStatus == null)
+            Project project = db.Projects.Find(id);
+            if (project == null)
             {
                 return HttpNotFound();
             }
-            return View(ticketStatus);
+            return View(project);
         }
 
-        // GET: TicketStatus/Create
+        // GET: Projects/Create
+        [Authorize(Roles = "Admin,Administrator")]
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: TicketStatus/Create
+        // POST: Projects/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize (Roles = "Admin,Administrator")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description")] TicketStatus ticketStatus)
+        public ActionResult Create([Bind(Include = "Id,Name,Description,UserId,Created,Updated")] Project project)
         {
             if (ModelState.IsValid)
             {
-                db.TicketStatus.Add(ticketStatus);
+                db.Projects.Add(project);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(ticketStatus);
+            return View(project);
         }
 
-        // GET: TicketStatus/Edit/5
+        // GET: Projects/Edit/5
+        [Authorize(Roles ="Admin,Administrator,ProjectManager")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TicketStatus ticketStatus = db.TicketStatus.Find(id);
-            if (ticketStatus == null)
+            Project project = db.Projects.Find(id);
+            if (project == null)
             {
                 return HttpNotFound();
             }
-            return View(ticketStatus);
+            return View(project);
         }
 
-        // POST: TicketStatus/Edit/5
+        // POST: Projects/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Admin,Administrator,ProjectManager")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description")] TicketStatus ticketStatus)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,UserId,Created,Updated")] Project project)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(ticketStatus).State = EntityState.Modified;
+                db.Entry(project).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
-            return View(ticketStatus);
+            return View(project);
         }
 
-        // GET: TicketStatus/Delete/5
+        // GET: Projects/Delete/5
+        [Authorize(Roles = "Admin,Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TicketStatus ticketStatus = db.TicketStatus.Find(id);
-            if (ticketStatus == null)
+            Project project = db.Projects.Find(id);
+            if (project == null)
             {
                 return HttpNotFound();
             }
-            return View(ticketStatus);
+            return View(project);
         }
 
-        // POST: TicketStatus/Delete/5
+        // POST: Projects/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Admin,Administrator")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            TicketStatus ticketStatus = db.TicketStatus.Find(id);
-            db.TicketStatus.Remove(ticketStatus);
+            Project project = db.Projects.Find(id);
+            db.Projects.Remove(project);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -1,4 +1,5 @@
 ﻿using BugTracker.Helpers;
+using BugTracker.Models;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
-namespace BugTracker.Models
+namespace BugTracker.Controllers
 {
     public class TicketsController : Controller
     {
@@ -35,16 +36,20 @@ namespace BugTracker.Models
 
         public ActionResult Details(int? id)
         {
+            TicketDetailViewModel model = new TicketDetailViewModel();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Ticket ticket = db.Tickets.Find(id);
+            ApplicationUser pm = db.Users.Find(ticket.Project.ProjectManagerId);
             if (ticket == null)
             {
                 return HttpNotFound();
             }
-            return View(ticket);
+            model.Ticket = ticket;
+            model.ProjectManager = pm;
+            return View(model);
         }
 
 

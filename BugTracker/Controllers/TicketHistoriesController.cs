@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BugTracker.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -7,109 +8,118 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
-namespace BugTracker.Models
+namespace BugTracker.Controllers
 {
-    public class TicketTypesController : Controller
+    public class TicketHistoriesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: TicketTypes
+        // GET: TicketHistories
         public ActionResult Index()
         {
-            return View(db.TicketTypes.ToList());
+            var ticketHistories = db.TicketHistories.Include(t => t.Ticket).Include(t => t.User);
+            return View(ticketHistories.ToList());
         }
 
-        // GET: TicketTypes/Details/5
+        // GET: TicketHistories/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TicketType ticketType = db.TicketTypes.Find(id);
-            if (ticketType == null)
+            TicketHistory ticketHistory = db.TicketHistories.Find(id);
+            if (ticketHistory == null)
             {
                 return HttpNotFound();
             }
-            return View(ticketType);
+            return View(ticketHistory);
         }
 
-        // GET: TicketTypes/Create
+        // GET: TicketHistories/Create
         public ActionResult Create()
         {
+            ViewBag.TicketId = new SelectList(db.Tickets, "Id", "SubmitterId");
+            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName");
             return View();
         }
 
-        // POST: TicketTypes/Create
+        // POST: TicketHistories/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description")] TicketType ticketType)
+        public ActionResult Create([Bind(Include = "Id,TicketId,Property,OldValue,NewValue,Changed,UserId")] TicketHistory ticketHistory)
         {
             if (ModelState.IsValid)
             {
-                db.TicketTypes.Add(ticketType);
+                db.TicketHistories.Add(ticketHistory);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(ticketType);
+            ViewBag.TicketId = new SelectList(db.Tickets, "Id", "SubmitterId", ticketHistory.TicketId);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", ticketHistory.UserId);
+            return View(ticketHistory);
         }
 
-        // GET: TicketTypes/Edit/5
+        // GET: TicketHistories/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TicketType ticketType = db.TicketTypes.Find(id);
-            if (ticketType == null)
+            TicketHistory ticketHistory = db.TicketHistories.Find(id);
+            if (ticketHistory == null)
             {
                 return HttpNotFound();
             }
-            return View(ticketType);
+            ViewBag.TicketId = new SelectList(db.Tickets, "Id", "SubmitterId", ticketHistory.TicketId);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", ticketHistory.UserId);
+            return View(ticketHistory);
         }
 
-        // POST: TicketTypes/Edit/5
+        // POST: TicketHistories/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description")] TicketType ticketType)
+        public ActionResult Edit([Bind(Include = "Id,TicketId,Property,OldValue,NewValue,Changed,UserId")] TicketHistory ticketHistory)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(ticketType).State = EntityState.Modified;
+                db.Entry(ticketHistory).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(ticketType);
+            ViewBag.TicketId = new SelectList(db.Tickets, "Id", "SubmitterId", ticketHistory.TicketId);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", ticketHistory.UserId);
+            return View(ticketHistory);
         }
 
-        // GET: TicketTypes/Delete/5
+        // GET: TicketHistories/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TicketType ticketType = db.TicketTypes.Find(id);
-            if (ticketType == null)
+            TicketHistory ticketHistory = db.TicketHistories.Find(id);
+            if (ticketHistory == null)
             {
                 return HttpNotFound();
             }
-            return View(ticketType);
+            return View(ticketHistory);
         }
 
-        // POST: TicketTypes/Delete/5
+        // POST: TicketHistories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            TicketType ticketType = db.TicketTypes.Find(id);
-            db.TicketTypes.Remove(ticketType);
+            TicketHistory ticketHistory = db.TicketHistories.Find(id);
+            db.TicketHistories.Remove(ticketHistory);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

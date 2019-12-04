@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BugTracker.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -7,118 +8,109 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
-namespace BugTracker.Models
+namespace BugTracker.Controllers
 {
-    public class TicketHistoriesController : Controller
+    public class TicketPrioritiesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: TicketHistories
+        // GET: TicketPriorities
         public ActionResult Index()
         {
-            var ticketHistories = db.TicketHistories.Include(t => t.Ticket).Include(t => t.User);
-            return View(ticketHistories.ToList());
+            return View(db.TicketPriorities.ToList());
         }
 
-        // GET: TicketHistories/Details/5
+        // GET: TicketPriorities/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TicketHistory ticketHistory = db.TicketHistories.Find(id);
-            if (ticketHistory == null)
+            TicketPriority ticketPriority = db.TicketPriorities.Find(id);
+            if (ticketPriority == null)
             {
                 return HttpNotFound();
             }
-            return View(ticketHistory);
+            return View(ticketPriority);
         }
 
-        // GET: TicketHistories/Create
+        // GET: TicketPriorities/Create
         public ActionResult Create()
         {
-            ViewBag.TicketId = new SelectList(db.Tickets, "Id", "SubmitterId");
-            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName");
             return View();
         }
 
-        // POST: TicketHistories/Create
+        // POST: TicketPriorities/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,TicketId,Property,OldValue,NewValue,Changed,UserId")] TicketHistory ticketHistory)
+        public ActionResult Create([Bind(Include = "Id,Name,Description")] TicketPriority ticketPriority)
         {
             if (ModelState.IsValid)
             {
-                db.TicketHistories.Add(ticketHistory);
+                db.TicketPriorities.Add(ticketPriority);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.TicketId = new SelectList(db.Tickets, "Id", "SubmitterId", ticketHistory.TicketId);
-            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", ticketHistory.UserId);
-            return View(ticketHistory);
+            return View(ticketPriority);
         }
 
-        // GET: TicketHistories/Edit/5
+        // GET: TicketPriorities/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TicketHistory ticketHistory = db.TicketHistories.Find(id);
-            if (ticketHistory == null)
+            TicketPriority ticketPriority = db.TicketPriorities.Find(id);
+            if (ticketPriority == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.TicketId = new SelectList(db.Tickets, "Id", "SubmitterId", ticketHistory.TicketId);
-            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", ticketHistory.UserId);
-            return View(ticketHistory);
+            return View(ticketPriority);
         }
 
-        // POST: TicketHistories/Edit/5
+        // POST: TicketPriorities/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,TicketId,Property,OldValue,NewValue,Changed,UserId")] TicketHistory ticketHistory)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description")] TicketPriority ticketPriority)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(ticketHistory).State = EntityState.Modified;
+                db.Entry(ticketPriority).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.TicketId = new SelectList(db.Tickets, "Id", "SubmitterId", ticketHistory.TicketId);
-            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", ticketHistory.UserId);
-            return View(ticketHistory);
+            return View(ticketPriority);
         }
 
-        // GET: TicketHistories/Delete/5
+        // GET: TicketPriorities/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TicketHistory ticketHistory = db.TicketHistories.Find(id);
-            if (ticketHistory == null)
+            TicketPriority ticketPriority = db.TicketPriorities.Find(id);
+            if (ticketPriority == null)
             {
                 return HttpNotFound();
             }
-            return View(ticketHistory);
+            return View(ticketPriority);
         }
 
-        // POST: TicketHistories/Delete/5
+        // POST: TicketPriorities/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            TicketHistory ticketHistory = db.TicketHistories.Find(id);
-            db.TicketHistories.Remove(ticketHistory);
+            TicketPriority ticketPriority = db.TicketPriorities.Find(id);
+            db.TicketPriorities.Remove(ticketPriority);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

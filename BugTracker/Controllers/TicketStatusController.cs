@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BugTracker.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -7,109 +8,109 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
-namespace BugTracker.Models
+namespace BugTracker.Controllers
 {
-    public class TicketPrioritiesController : Controller
+    public class TicketStatusController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: TicketPriorities
+        // GET: TicketStatus
         public ActionResult Index()
         {
-            return View(db.TicketPriorities.ToList());
+            return View(db.TicketStatus.ToList());
         }
 
-        // GET: TicketPriorities/Details/5
+        // GET: TicketStatus/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TicketPriority ticketPriority = db.TicketPriorities.Find(id);
-            if (ticketPriority == null)
+            TicketStatus ticketStatus = db.TicketStatus.Find(id);
+            if (ticketStatus == null)
             {
                 return HttpNotFound();
             }
-            return View(ticketPriority);
+            return View(ticketStatus);
         }
 
-        // GET: TicketPriorities/Create
+        // GET: TicketStatus/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: TicketPriorities/Create
+        // POST: TicketStatus/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description")] TicketPriority ticketPriority)
+        public ActionResult Create([Bind(Include = "Id,Name,Description")] TicketStatus ticketStatus)
         {
             if (ModelState.IsValid)
             {
-                db.TicketPriorities.Add(ticketPriority);
+                db.TicketStatus.Add(ticketStatus);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(ticketPriority);
+            return View(ticketStatus);
         }
 
-        // GET: TicketPriorities/Edit/5
+        // GET: TicketStatus/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TicketPriority ticketPriority = db.TicketPriorities.Find(id);
-            if (ticketPriority == null)
+            TicketStatus ticketStatus = db.TicketStatus.Find(id);
+            if (ticketStatus == null)
             {
                 return HttpNotFound();
             }
-            return View(ticketPriority);
+            return View(ticketStatus);
         }
 
-        // POST: TicketPriorities/Edit/5
+        // POST: TicketStatus/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description")] TicketPriority ticketPriority)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description")] TicketStatus ticketStatus)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(ticketPriority).State = EntityState.Modified;
+                db.Entry(ticketStatus).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(ticketPriority);
+            return View(ticketStatus);
         }
 
-        // GET: TicketPriorities/Delete/5
+        // GET: TicketStatus/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TicketPriority ticketPriority = db.TicketPriorities.Find(id);
-            if (ticketPriority == null)
+            TicketStatus ticketStatus = db.TicketStatus.Find(id);
+            if (ticketStatus == null)
             {
                 return HttpNotFound();
             }
-            return View(ticketPriority);
+            return View(ticketStatus);
         }
 
-        // POST: TicketPriorities/Delete/5
+        // POST: TicketStatus/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            TicketPriority ticketPriority = db.TicketPriorities.Find(id);
-            db.TicketPriorities.Remove(ticketPriority);
+            TicketStatus ticketStatus = db.TicketStatus.Find(id);
+            db.TicketStatus.Remove(ticketStatus);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

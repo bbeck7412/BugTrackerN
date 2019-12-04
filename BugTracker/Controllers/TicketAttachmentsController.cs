@@ -1,4 +1,5 @@
 ﻿using BugTracker.Helpers;
+using BugTracker.Models;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
-namespace BugTracker.Models
+namespace BugTracker.Controllers
 {
     public class TicketAttachmentsController : Controller
     {
