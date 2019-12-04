@@ -363,6 +363,11 @@
     <Content Include="Scripts\ckeditor.js" />
     <Content Include="Scripts\classie.js" />
     <Content Include="Scripts\custom.js" />
+    <Content Include="Scripts\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\dataTables.colReorder.min.js" />
+    <Content Include="Scripts\dataTables.colVis.min.js" />
+    <Content Include="Scripts\datatables.responsive.min.js" />
+    <Content Include="Scripts\dataTables.tableTools.min.js" />
     <Content Include="Scripts\fastclick.min.js" />
     <Content Include="Scripts\fullcalendar.min.js" />
     <Content Include="Scripts\global_functions.js" />
