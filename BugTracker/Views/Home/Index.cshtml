@@ -118,11 +118,12 @@
                                 <tbody>
                                     @foreach (var proj in Model.Projects)
                                     {
-                                        
-                                         var desc = proj.Project.Description.Length > 30 ? proj.Project.Description.Substring(0, 29) + " ..." : proj.Project.Description; 
+
+                                        var desc = proj.Project.Description.Length > 30 ? proj.Project.Description.Substring(0, 29) + " ..." : proj.Project.Description;
+
                                         <tr>
                                             <td>@proj.Project.Name</td>
-                                            <td> @desc </td>
+                                            <td>@desc</td>
                                             <td>@proj.ProjectManager.DisplayName</td>
                                             <td>@proj.Project.Created.Date.ToString("MM.dd.yyyy")</td>
                                             <td>@proj.Project.Users.Count()</td>
