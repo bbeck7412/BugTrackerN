@@ -369,6 +369,7 @@
     <Content Include="Scripts\dataTables.colVis.min.js" />
     <Content Include="Scripts\datatables.responsive.min.js" />
     <Content Include="Scripts\dataTables.tableTools.min.js" />
+    <Content Include="Scripts\dropzone.min.js" />
     <Content Include="Scripts\fastclick.min.js" />
     <Content Include="Scripts\fullcalendar.min.js" />
     <Content Include="Scripts\global_functions.js" />
@@ -376,6 +377,7 @@
     <Content Include="Scripts\jarvis.widget.min.js" />
     <Content Include="Scripts\jquery-2.0.2.min.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
+    <Content Include="Scripts\jquery-form.min.js" />
     <Content Include="Scripts\jquery-jvectormap-1.2.2.min.js" />
     <Content Include="Scripts\jquery-jvectormap-world-mill-en.js" />
     <Content Include="Scripts\jquery-ui-1.10.3.min.js" />
