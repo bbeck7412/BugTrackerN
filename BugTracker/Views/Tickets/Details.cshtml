@@ -165,7 +165,7 @@
                                         <fieldset>
                                             <section>
                                                 <label class="label">Comment</label>
-                                                <label class="textarea" id="comment_Height"> <textarea rows="8" name="comment"></textarea> </label>
+                                                <label class="textarea" id="comment_Height">  @Html.TextArea("CommentBody", new { rows = 8, cols = 90, placeholder = "Add Comment" }) </label>
                                             </section>
                                         </fieldset>
 
@@ -182,7 +182,6 @@
                                             </p>
                                         </div>
                                     </form>
-
                                 </div>
                             }
                         }

@@ -52,7 +52,7 @@ namespace BugTracker.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Created,CommentBody,TicketId,UserId,ProjectId")] TicketComment ticketComment)
+        public ActionResult Create([Bind(Include = "Id,CommentBody,TicketId,ProjectId")] TicketComment ticketComment)
         {
             if (ModelState.IsValid)
             {
