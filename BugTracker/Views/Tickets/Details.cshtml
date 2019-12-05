@@ -112,10 +112,92 @@
     </div>
 
     <hr style="border:2px solid black;" />
-    <div class="row">
-        <div class="col-xs-4">
-            <div class="jarviswidget jarviswidget-color-darken jarviswidget-sortable" id="wid-id-0" data-widget-editbutton="false" data-widget-custombutton="false" role="widget">
-                <!-- widget options:
+
+    <section id="widget-grid">
+
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="jarviswidget jarviswidget-color-darken jarviswidget-sortable" id="wid-id-0" data-widget-editbutton="false" data-widget-custombutton="false" role="widget">
+                    <!-- widget options:
+                        usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                        data-widget-colorbutton="false"
+                        data-widget-editbutton="false"
+                        data-widget-togglebutton="false"
+                        data-widget-deletebutton="false"
+                        data-widget-fullscreenbutton="false"
+                        data-widget-custombutton="false"
+                        data-widget-collapsed="true"
+                        data-widget-sortable="false"
+
+                    -->
+                    <header role="heading" class="ui-sortable-handle">
+                        <div class="jarviswidget-ctrls" role="menu"> <a href="javascript:void(0);" class="button-icon jarviswidget-toggle-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Collapse"><i class="fa fa-minus "></i></a></div>
+                        <h2>Comment form </h2>
+
+                        <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span>
+                    </header>
+
+                    <!-- widget div-->
+                    <div role="content">
+
+                        <!-- widget edit box -->
+                        <div class="jarviswidget-editbox">
+                            <!-- This area used as dropdown edit box -->
+
+                        </div>
+                        <!-- end widget edit box -->
+                        <!-- widget content -->
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                             using (Html.BeginForm("Create", "TicketComments", FormMethod.Post, new { @class = "smart-form client-form" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.Hidden("TicketId", Model.Ticket.Id)
+
+                                <div class="widget-body no-padding">
+
+                                    <form action="php/demo-comment.php" method="post" id="comment-form" class="smart-form" novalidate="novalidate">
+                                        <header>
+                                            Attach Comment
+                                        </header>
+
+                                        <fieldset>
+                                            <section>
+                                                <label class="label">Comment</label>
+                                                <label class="textarea" id="comment_Height"> <textarea rows="8" name="comment"></textarea> </label>
+                                            </section>
+                                        </fieldset>
+
+                                        <footer>
+                                            <button type="submit" name="submit" class="btn btn-primary">
+                                                Submit
+                                            </button>
+                                        </footer>
+
+                                        <div class="message">
+                                            <i class="fa fa-check fa-lg"></i>
+                                            <p>
+                                                Your comment was successfully added!
+                                            </p>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            }
+                        }
+                        <!-- end widget content -->
+
+                    </div>
+                    <!-- end widget div -->
+
+                </div>
+            </div>
+            <!-- End Comment-->
+            <!--Begin Dropzone-->
+            <div class="col-xs-8">
+                <div class="jarviswidget jarviswidget-color-darken jarviswidget-sortable" id="wid-id-1" data-widget-editbutton="false" role="widget">
+                    <!-- widget options:
                     usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 
                     data-widget-colorbutton="false"
@@ -127,140 +209,71 @@
                     data-widget-collapsed="true"
                     data-widget-sortable="false"
 
-                -->
-                <header role="heading" class="ui-sortable-handle">
-                    <div class="jarviswidget-ctrls" role="menu"> <a href="javascript:void(0);" class="button-icon jarviswidget-toggle-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Collapse"><i class="fa fa-minus "></i></a></div>
-                    <h2>Comment form </h2>
+                    -->
+                    <header role="heading" class="ui-sortable-handle">
+                        <div class="jarviswidget-ctrls" role="menu"> <a href="javascript:void(0);" class="button-icon jarviswidget-toggle-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Collapse"><i class="fa fa-minus "></i></a> </div>
+                        <h2> Attachment Dropzone </h2>
 
-                    <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span>
-                </header>
+                        <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span>
+                    </header>
 
-                <!-- widget div-->
-                <div role="content">
+                    <!-- widget div-->
+                    <div role="content">
 
-                    <!-- widget edit box -->
-                    <div class="jarviswidget-editbox">
-                        <!-- This area used as dropdown edit box -->
+                        <!-- widget edit box -->
+                        <div class="jarviswidget-editbox">
+                            <!-- This area used as dropdown edit box -->
 
-                    </div>
-                    <!-- end widget edit box -->
-                    <!-- widget content -->
-                    <div class="widget-body no-padding">
+                        </div>
+                        <!-- end widget edit box -->
+                        <!-- widget content -->
+                        <div class="widget-body">
 
-                        <form action="php/demo-comment.php" method="post" id="comment-form" class="smart-form" novalidate="novalidate">
-                            <header>
-                                Attach Comment
-                            </header>
+                            <form action="upload.php" class="dropzone dz-clickable" id="mydropzone"><div class="dz-default dz-message"><span><span class="text-center"><span class="font-lg visible-xs-block visible-sm-block visible-lg-block"><span class="font-lg"><i class="fa fa-caret-right text-danger"></i> Drop files <span class="font-xs">to upload</span></span><span>&nbsp;&nbsp;<h4 class="display-inline"> (Or Click)</h4></span></span></span></span></div></form>
 
-                            <fieldset>
-                                <section>
-                                    <label class="label">Comment</label>
-                                    <label class="textarea" id="comment_Height"> <textarea rows="8" name="comment"></textarea> </label>
-                                </section>
-                            </fieldset>
-
-                            <footer>
-                                <button type="submit" name="submit" class="btn btn-primary">
-                                    Submit
-                                </button>
-                            </footer>
-
-                            <div class="message">
-                                <i class="fa fa-check fa-lg"></i>
-                                <p>
-                                    Your comment was successfully added!
-                                </p>
-                            </div>
-                        </form>
+                        </div>
+                        <!-- end widget content -->
 
                     </div>
-                    <!-- end widget content -->
+                    <!-- end widget div -->
 
                 </div>
-                <!-- end widget div -->
-
             </div>
-        </div>
-        <!-- End Comment-->
 
-        <!--Begin Dropzone-->
-        <div class="col-xs-8">
-            <div class="jarviswidget jarviswidget-color-darken jarviswidget-sortable" id="wid-id-1" data-widget-editbutton="false" role="widget">
-                <!-- widget options:
-                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-
-                data-widget-colorbutton="false"
-                data-widget-editbutton="false"
-                data-widget-togglebutton="false"
-                data-widget-deletebutton="false"
-                data-widget-fullscreenbutton="false"
-                data-widget-custombutton="false"
-                data-widget-collapsed="true"
-                data-widget-sortable="false"
-
-                -->
-                <header role="heading" class="ui-sortable-handle">
-                    <div class="jarviswidget-ctrls" role="menu"> <a href="javascript:void(0);" class="button-icon jarviswidget-toggle-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Collapse"><i class="fa fa-minus "></i></a> </div>
-                    <h2> Attachment Dropzone </h2>
-
-                    <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span>
-                </header>
-
-                <!-- widget div-->
-                <div role="content">
-
-                    <!-- widget edit box -->
-                    <div class="jarviswidget-editbox">
-                        <!-- This area used as dropdown edit box -->
-
-                    </div>
-                    <!-- end widget edit box -->
-                    <!-- widget content -->
-                    <div class="widget-body">
-
-                        <form action="upload.php" class="dropzone dz-clickable" id="mydropzone"><div class="dz-default dz-message"><span><span class="text-center"><span class="font-lg visible-xs-block visible-sm-block visible-lg-block"><span class="font-lg"><i class="fa fa-caret-right text-danger"></i> Drop files <span class="font-xs">to upload</span></span><span>&nbsp;&nbsp;<h4 class="display-inline"> (Or Click)</h4></span></span></span></span></div></form>
-
-                    </div>
-                    <!-- end widget content -->
-
-                </div>
-                <!-- end widget div -->
-
-            </div>
         </div>
 
-    </div>
+    </section>
 
 
     @*@if (User.Identity.IsAuthenticated)
-        {
-            <div id="ticketComments">
-                @using (Html.BeginForm("Create", "TicketComments", FormMethod.Post))
-                {
-                    @Html.AntiForgeryToken()
-                    @Html.Hidden("TicketId", Model.Ticket.Id)
+    {
+        <div id="ticketComments">
+            @using (Html.BeginForm("Create", "TicketComments", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.Hidden("TicketId", Model.Ticket.Id)
 
-                    <div class="row">
-                        <div class="offset-3 col-md-6">
-                            @Html.TextArea("CommentBody", new { rows = 5, cols = 50, placeholder = "Add Comment" })
-                        </div>
+                <div class="row">
+                    <div class="offset-3 col-md-6">
+                        @Html.TextArea("CommentBody", new { rows = 5, cols = 50, placeholder = "Add Comment" })
                     </div>
+                </div>
 
-                    <div class="row">
-                        <br/>
-                        <div class="offset-3 col-md-6">
+                <div class="row">
+                    <br />
+                    <div class="offset-3 col-md-6">
 
-                            @using (Html.BeginForm("Details","Ticket"))
-                            {
-                               <input type="submit" class="btn btn-primary" value="Add Comments" />
-                            }
+                        @using (Html.BeginForm("Details", "Ticket"))
+                        {
+                            <input type="submit" class="btn btn-primary" value="Add Comments" />
+                        }
 
-                        </div>
                     </div>
+                </div>
 
-                }
-            </div>
-        }*@
+            }
+        </div>
+    }*@
 
     <hr style="border:2px solid black;" />
 
@@ -293,18 +306,27 @@
 
     <!--Dropzone JS-->
     <script>
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
-        _gaq.push(['_trackPageview']);
 
-        (function () {
-            var ga = document.createElement('script');
-            ga.type = 'text/javascript';
-            ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(ga, s);
-        })();
+        // DO NOT REMOVE : GLOBAL FUNCTIONS!
+
+        Dropzone.autoDiscover = false;
+
+        $(document).ready(function () {
+
+            pageSetUp();
+
+            //Dropzone.autoDiscover = false;
+
+            $("#mydropzone").dropzone({
+                //url: "/file/post",
+                addRemoveLinks: true,
+                maxFilesize: 0.5,
+                dictDefaultMessage: '<span class="text-center"><span class="font-lg visible-xs-block visible-sm-block visible-lg-block"><span class="font-lg"><i class="fa fa-caret-right text-danger"></i> Drop files <span class="font-xs">to upload</span></span><span>&nbsp&nbsp<h4 class="display-inline"> (Or Click)</h4></span>',
+                dictResponseError: 'Error uploading file!'
+            });
+
+
+        })
 
     </script>
 
