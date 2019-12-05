@@ -150,7 +150,7 @@
                         <!-- widget content -->
                         @if (User.Identity.IsAuthenticated)
                         {
-                             using (Html.BeginForm("Create", "TicketComments", FormMethod.Post, new { @class = "smart-form client-form" }))
+                            using (Html.BeginForm("Create", "TicketComments", FormMethod.Post, new { @class = "smart-form client-form" }))
                             {
                                 @Html.AntiForgeryToken()
                                 @Html.Hidden("TicketId", Model.Ticket.Id)
@@ -164,8 +164,8 @@
 
                                         <fieldset>
                                             <section>
-                                                <label class="label">Comment</label>
-                                                <label class="textarea" id="comment_Height">  @Html.TextArea("CommentBody", new { rows = 8, cols = 90, placeholder = "Add Comment" }) </label>
+                                                <label class="label"> Comment Details </label>
+                                                <label class="textarea" id="comment_Height">  @Html.TextArea("CommentBody", new { rows = 8, cols = 90 }) </label>
                                             </section>
                                         </fieldset>
 
@@ -243,52 +243,31 @@
 
     </section>
 
-
-    @*@if (User.Identity.IsAuthenticated)
-    {
-        <div id="ticketComments">
-            @using (Html.BeginForm("Create", "TicketComments", FormMethod.Post))
-            {
-                @Html.AntiForgeryToken()
-                @Html.Hidden("TicketId", Model.Ticket.Id)
-
-                <div class="row">
-                    <div class="offset-3 col-md-6">
-                        @Html.TextArea("CommentBody", new { rows = 5, cols = 50, placeholder = "Add Comment" })
-                    </div>
-                </div>
-
-                <div class="row">
-                    <br />
-                    <div class="offset-3 col-md-6">
-
-                        @using (Html.BeginForm("Details", "Ticket"))
-                        {
-                            <input type="submit" class="btn btn-primary" value="Add Comments" />
-                        }
-
-                    </div>
-                </div>
-
-            }
-        </div>
-    }*@
-
     <hr style="border:2px solid black;" />
 
     @foreach (var comment in Model.Ticket.TicketComments.OrderByDescending(c => c.Created))
     {
-        <div class="container margin-top-5">
-            <h2> Author: @comment.User.DisplayName</h2>
-            <div class="media">
-                <img src="~/Content/img/avatars/sunny.png" class="glyphicon-align-left margin-right-5" style="width:60px" />
-                <div> <h2>  @comment.CommentBody </h2> </div>
-                <div class="media-body">
-                    <h4> Written: @comment.Created.ToString("MMM dd, yyyy")</h4>
-                </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <ul class="media-list">
+                    <li class="media">
+                        <a class="pull-left" href="javascript:void(0);"> <img style="width:64px;height:64px " class="img-circle media-object" alt="64x64" src="~/Images/DevImg.jpg"> </a>
+                        <div class="media-body">
+                            <h1> <i>@comment.User.DisplayName</i> </h1>
+                            <p>
+                                <h2> <i>@comment.CommentBody</i> </h2>
+                            </p>
+                            <p>
+                                <h4> <i>@comment.Created.ToString("MMM dd, yyyy")</i> </h4>
+                            </p>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     }
+
+
 
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.Ticket.Id }) |
