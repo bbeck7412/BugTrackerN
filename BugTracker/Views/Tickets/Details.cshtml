@@ -115,8 +115,51 @@
     <br />
     <br />
 
+    <div class="row responsive">
 
-    <hr style="border:2px solid black;" />
+        <div class="col-xs-3">
+            <div class="thumbnail">
+                <div class="caption" style="background: rgb(94,93,93);background: radial-gradient(circle, rgba(94,93,93,1) 1%, rgba(27,30,36,1) 45%);">     
+                    <h3 class="text-align-center" style="color:aliceblue"> <b>Ticket Status</b>  </h3>
+                    <p class="text-align-center" style="color:aliceblue"> <b><i>@Model.Ticket.TicketStatus.Name</i></b>  </p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-3">
+            <div class="thumbnail">
+                <div class="caption" style="background: rgb(94,93,93);background: radial-gradient(circle, rgba(94,93,93,1) 1%, rgba(27,30,36,1) 45%);">                
+                    <h3 class="text-align-center" style="color:aliceblue"> <b>Priority Status</b>  </h3>
+                    <p class="text-align-center" style="color:aliceblue"> <b><i>@Model.Ticket.TicketPriority.Name</i></b>  </p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-3">
+            <div class="thumbnail">
+                <div class="caption" style="background: rgb(94,93,93);background: radial-gradient(circle, rgba(94,93,93,1) 1%, rgba(27,30,36,1) 45%);">           
+                    <h3 class="text-align-center" style="color:aliceblue"> <b>Ticket Type</b> </h3>
+                    <p class="text-align-center" style="color:aliceblue"> <b><i>@Model.Ticket.TicketType.Name</i></b>  </p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-3">
+            <div class="thumbnail">
+                <div class="caption" style="background: rgb(94,93,93);background: radial-gradient(circle, rgba(94,93,93,1) 1%, rgba(27,30,36,1) 45%);">
+                    <h3 class="text-align-center" style="color:aliceblue"> <b>Ticket Created By </b> </h3>
+                    <p class="text-align-center" style="color:aliceblue"> <b><i>@Model.Ticket.Submitter.DisplayName</i></b>  </p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <hr style="border:2px solid black;"  />
 
     <section id="widget-grid">
 
@@ -215,7 +258,7 @@
 
                     -->
                     <header role="heading" class="ui-sortable-handle">
-/                        <div class="jarviswidget-ctrls" role="menu"> <a href="javascript:void(0);" class="button-icon jarviswidget-toggle-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Collapse"><i class="fa fa-minus "></i></a> </div>
+                        <div class="jarviswidget-ctrls" role="menu"> <a href="javascript:void(0);" class="button-icon jarviswidget-toggle-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Collapse"><i class="fa fa-minus "></i></a> </div>
                         <h2> Attachment Dropzone </h2>
 
                         <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span>
@@ -250,7 +293,7 @@
 
     <hr style="border:2px solid black;" />
     <div class="row">
-        <div class="col-xs-offset-6 col-xs-6 text-align-center" >
+        <div class="col-xs-offset-6 col-xs-6 text-align-center">
             Upload section
         </div>
     </div>

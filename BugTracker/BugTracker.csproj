@@ -350,12 +350,13 @@
     <Content Include="Images\s1.jpg" />
     <Content Include="Images\s2.jpg" />
     <Content Include="Images\s3.jpg" />
+    <Content Include="Images\saturation.png" />
     <Content Include="Images\sptouch-icon-iphone.png" />
     <Content Include="Images\timer.png" />
     <Content Include="Images\touch-icon-ipad-retina.png" />
     <Content Include="Images\touch-icon-ipad.png" />
     <Content Include="Images\touch-icon-iphone-retina.png" />
-    <Content Include="Images\white_black - Copy.png" />
+    <Content Include="Images\white_black - Copy %282%29.png" />
     <Content Include="Images\white_black.png" />
     <Content Include="Scripts\app.config.js" />
     <Content Include="Scripts\app.min.js" />
