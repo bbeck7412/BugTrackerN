@@ -1,118 +1,108 @@
-﻿@model BugTracker.Models.DashboardViewModel
+﻿@model IEnumerable<BugTracker.Models.Project>
 
 @{
     ViewBag.Title = "~/Views/Shared/_Layout.cshtml";
 }
 
 <section id="widget-grid" class="">
-    <div class="row">
-        <article class="col-sm-12">
-            <!-- new widget -->
-            <!-- Widget ID (each widget will need unique ID)-->
-            <div class="jarviswidget jarviswidget-color-darken jarviswidget-sortable" id="wid-id-1" data-widget-colorbutton="false" data-widget-deletebutton="false" data-widget-editbutton="false">
-                <!-- widget options:
-            usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+    <div class="jarviswidget jarviswidget-color-darken" id="wid-id-1" data-widget-editbutton="false">
+        <!-- widget options:
+        usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 
-            data-widget-colorbutton="false"
-            data-widget-editbutton="false"
-            data-widget-togglebutton="false"
-            data-widget-deletebutton="false"
-            data-widget-fullscreenbutton="false"
-            data-widget-custombutton="false"
-            data-widget-collapsed="true"
-            data-widget-sortable="false"
+        data-widget-colorbutton="false"
+        data-widget-editbutton="false"
+        data-widget-togglebutton="false"
+        data-widget-deletebutton="false"
+        data-widget-fullscreenbutton="false"
+        data-widget-custombutton="false"
+        data-widget-collapsed="true"
+        data-widget-sortable="false"
 
-            -->
-                <header role="heading" class="ui-sortable-handle">
-                    <h6> BugZapper Current Projects </h6>
+        -->
+        <header>
+            <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+            <h2>Column Filters </h2>
 
-                </header>
+        </header>
 
-                <!-- widget div-->
-                <div>
+        <!-- widget div-->
+        <div>
 
-                    <!-- widget edit box -->
-                    <div class="jarviswidget-editbox">
-                        <!-- This area used as dropdown edit box -->
-
-                    </div>
-                    <!-- end widget edit box -->
-                    <!-- widget content -->
-                    <div class="widget-body no-padding">
-
-                        <table id="datatable_fixed_column" class="table table-striped table-bordered" width="100%">
-
-                            <thead>
-                                <tr>
-                                    <th class="hasinput" style="width:17%">
-                                        <input type="text" class="form-control" placeholder=" Project Name " />
-                                    </th>
-
-                                    <th class="hasinput" style="width:17%">
-                                        <input type="text" class="form-control" placeholder=" Project Name " />
-                                    </th>
-
-                                    <th class="hasinput" style="width:17%">
-                                        <input type="text" class="form-control" placeholder=" Project Manager " />
-                                    </th>
-
-                                    <th class="hasinput" style="width:17%">
-                                        <input type="text" class="form-control" placeholder=" Created Date " />
-                                    </th>
-
-                                    <th class="hasinput" style="width:17%">
-                                        <input type="text" class="form-control" placeholder=" Users on Project " />
-                                    </th>
-
-                                    <th class="hasinput" style="width:17%">
-                                        <input type="text" class="form-control" placeholder=" Tickets on Project " />
-                                    </th>
-
-                                </tr>
-                                <tr>
-                                    <th data-class="expand"> Project Name</th>
-                                    <th>Description</th>
-                                    <th data-hide="phone"> Project Manager</th>
-                                    <th data-hide="phone"> Created Date </th>
-                                    <th data-hide="phone,tablet">  Users on Project </th>
-                                    <th data-hide="phone,tablet"> Tickets on Project </th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                @foreach (var proj in Model.Projects)
-                                {
-
-                                    var desc = proj.Project.Description.Length > 30 ? proj.Project.Description.Substring(0, 29) + " ..." : proj.Project.Description;
-
-                                    <tr>
-                                        <td>@proj.Project.Name</td>
-                                        <td>@desc</td>
-                                        <td>@proj.ProjectManager.DisplayName</td>
-                                        <td>@proj.Project.Created.Date.ToString("MM.dd.yyyy")</td>
-                                        <td>@proj.Project.Users.Count()</td>
-                                        <td>@proj.Project.Tickets.Count</td>
-
-                                    </tr>
-                                }
-
-
-                            </tbody>
-
-                        </table>
-
-                    </div>
-                    <!-- end widget content -->
-
-                </div>
-                <!-- end widget div -->
+            <!-- widget edit box -->
+            <div class="jarviswidget-editbox">
+                <!-- This area used as dropdown edit box -->
 
             </div>
-            <!-- end widget -->
-            <!-- end widget div -->
-            <!-- end widget -->
+            <!-- end widget edit box -->
+            <!-- widget content -->
+            <div class="widget-body no-padding">
 
-        </article>
+                <table id="datatable_fixed_column" class="table table-striped table-bordered" width="100%">
+
+                    <thead>
+                        <tr>
+                            <th class="hasinput" style="width:17%">
+                                <input type="text" class="form-control" placeholder="Filter Name" />
+                            </th>
+                            <th class="hasinput" style="width:18%">
+                                <div class="input-group">
+                                    <input class="form-control" placeholder="Filter Position" type="text">
+                                    <span class="input-group-addon">
+                                        <span class="onoffswitch">
+                                            <input type="checkbox" name="start_interval" class="onoffswitch-checkbox" id="st3">
+                                            <label class="onoffswitch-label" for="st3">
+                                                <span class="onoffswitch-inner" data-swchon-text="YES" data-swchoff-text="NO"></span>
+                                                <span class="onoffswitch-switch"></span>
+                                            </label>
+                                        </span>
+                                    </span>
+                                </div>
+
+
+                            </th>
+                            <th class="hasinput" style="width:16%">
+                                <input type="text" class="form-control" placeholder="Filter Office" />
+                            </th>
+                            <th class="hasinput icon-addon">
+                                <input id="dateselect_filter" type="text" placeholder="Filter Date" class="form-control datepicker" data-dateformat="yy/mm/dd">
+                                <label for="dateselect_filter" class="glyphicon glyphicon-calendar no-margin padding-top-15" rel="tooltip" title="" data-original-title="Filter Date"></label>
+                            </th>
+                            <th class="hasinput" style="width:17%">
+                                <input type="text" class="form-control" placeholder="Filter Age" />
+                            </th>
+                            <th class="hasinput" style="width:16%">
+                                <input type="text" class="form-control" placeholder="Filter Salary" />
+                            </th>
+                        </tr>
+                        <tr>
+                            <th data-class="expand"> Project Name</th>
+                            <th> Project Description </th>
+                            <th data-hide="phone"> Project Manager </th>
+                            <th data-hide="phone"> Created Date </th>
+                            <th data-hide="phone,tablet"> Project Tickets </th>
+                            <th data-hide="phone,tablet"> Users on Project </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Tiger Nixon</td>
+                            <td>System Architect</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+                            <td>2014/12/12</td>
+                            <td>$320,800</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+            <!-- end widget content -->
+
+        </div>
+        <!-- end widget div -->
+
     </div>
     <!-- end widget -->
 
