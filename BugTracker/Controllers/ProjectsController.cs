@@ -62,10 +62,11 @@ namespace BugTracker.Controllers
         [HttpPost]
         [Authorize (Roles = "Admin,Administrator")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,UserId,Created,Updated")] Project project)
+        public ActionResult Create([Bind(Include = "Id,Name,Description,UserId,Updated")] Project project)
         {
             if (ModelState.IsValid)
             {
+                project.Created = DateTime.Now;
                 db.Projects.Add(project);
                 db.SaveChanges();
                 return RedirectToAction("Index");
