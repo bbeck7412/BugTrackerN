@@ -13,6 +13,13 @@
             height: 156px !important;
         }
     </style>
+
+    <style>
+        .btn-primary.custom-btn {
+            background-color: #1b1e24;
+            border-color: aliceblue;
+        }
+    </style>
     <meta name="viewport" content="width=device-width" />
     <title>Details</title>
 </head>
@@ -119,30 +126,30 @@
 
         <div class="col-xs-3">
             <div class="thumbnail">
-                <div class="caption" style="background: rgb(94,93,93);background: radial-gradient(circle, rgba(94,93,93,1) 1%, rgba(27,30,36,1) 45%);">     
+                <div class="caption" style="background: rgb(94,93,93);background: radial-gradient(circle, rgba(94,93,93,1) 1%, rgba(27,30,36,1) 45%);">
                     <h3 class="text-align-center" style="color:aliceblue"> <b>Ticket Status</b>  </h3>
                     <p class="text-align-center" style="color:aliceblue"> <b><i>@Model.Ticket.TicketStatus.Name</i></b>  </p>
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                    <p><a href=@Url.Action("Edit","Tickets", new { id = Model.Ticket.Id}) class="btn btn-primary custom-btn" role="button"> Edit </a> </p>
                 </div>
             </div>
         </div>
 
         <div class="col-xs-3">
             <div class="thumbnail">
-                <div class="caption" style="background: rgb(94,93,93);background: radial-gradient(circle, rgba(94,93,93,1) 1%, rgba(27,30,36,1) 45%);">                
+                <div class="caption" style="background: rgb(94,93,93);background: radial-gradient(circle, rgba(94,93,93,1) 1%, rgba(27,30,36,1) 45%);">
                     <h3 class="text-align-center" style="color:aliceblue"> <b>Priority Status</b>  </h3>
                     <p class="text-align-center" style="color:aliceblue"> <b><i>@Model.Ticket.TicketPriority.Name</i></b>  </p>
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                    <p><a href=@Url.Action("Edit","Tickets", new { id = Model.Ticket.Id}) class="btn btn-primary custom-btn" role="button"> Edit </a> </p>
                 </div>
             </div>
         </div>
 
         <div class="col-xs-3">
             <div class="thumbnail">
-                <div class="caption" style="background: rgb(94,93,93);background: radial-gradient(circle, rgba(94,93,93,1) 1%, rgba(27,30,36,1) 45%);">           
+                <div class="caption" style="background: rgb(94,93,93);background: radial-gradient(circle, rgba(94,93,93,1) 1%, rgba(27,30,36,1) 45%);">
                     <h3 class="text-align-center" style="color:aliceblue"> <b>Ticket Type</b> </h3>
                     <p class="text-align-center" style="color:aliceblue"> <b><i>@Model.Ticket.TicketType.Name</i></b>  </p>
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                    <p><a href=@Url.Action("Edit","Tickets", new { id = Model.Ticket.Id}) class="btn btn-primary custom-btn" role="button"> Edit </a> </p>
                 </div>
             </div>
         </div>
@@ -152,14 +159,14 @@
                 <div class="caption" style="background: rgb(94,93,93);background: radial-gradient(circle, rgba(94,93,93,1) 1%, rgba(27,30,36,1) 45%);">
                     <h3 class="text-align-center" style="color:aliceblue"> <b>Ticket Created By </b> </h3>
                     <p class="text-align-center" style="color:aliceblue"> <b><i>@Model.Ticket.Submitter.DisplayName</i></b>  </p>
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                    <p><a href=@Url.Action("Edit","Tickets", new { id = Model.Ticket.Id}) class="btn btn-primary custom-btn" role="button"> Edit </a> </p>
                 </div>
             </div>
         </div>
 
     </div>
 
-    <hr style="border:2px solid black;"  />
+    <hr style="border:2px solid black;" />
 
     <section id="widget-grid">
 
@@ -321,6 +328,7 @@
     }
 
     <p>
+        
         @Html.ActionLink("Edit", "Edit", new { id = Model.Ticket.Id }) |
         @Html.ActionLink("Back to List", "Index")
     </p>
