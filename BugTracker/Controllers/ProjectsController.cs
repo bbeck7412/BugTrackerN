@@ -24,6 +24,7 @@ namespace BugTracker.Controllers
         // GET: Projects
         
         public ActionResult Index()
+
         {
             if (User.Identity.IsAuthenticated)
             {
