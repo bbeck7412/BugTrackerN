@@ -348,8 +348,6 @@
     <Content Include="Images\pulse1.png" />
     <Content Include="Images\ribbon.png" />
     <Content Include="Images\s1.jpg" />
-    <Content Include="Images\s2.jpg" />
-    <Content Include="Images\s3.jpg" />
     <Content Include="Images\saturation.png" />
     <Content Include="Images\sptouch-icon-iphone.png" />
     <Content Include="Images\timer.png" />
