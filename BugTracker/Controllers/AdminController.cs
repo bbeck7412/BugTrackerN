@@ -81,7 +81,7 @@ namespace BugTracker.Controllers
                     //Add back PM if possible
                     if (!string.IsNullOrEmpty(projectManagerId))
                     {
-                        projectHelper.AddProjectManagerToProject(projectManagerId, projectId);
+                        projectHelper.AddUserToProject(projectManagerId, projectId);
 
                     }
 

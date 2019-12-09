@@ -9,5 +9,6 @@ namespace BugTracker.Models
     {
         public Ticket Ticket { get; set; }
         public ApplicationUser ProjectManager { get; set; }
+        public TicketAttachment TicketAttachment { get; set; }
     }
 }

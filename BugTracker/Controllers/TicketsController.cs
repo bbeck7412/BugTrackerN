@@ -25,8 +25,6 @@ namespace BugTracker.Controllers
 
         public ActionResult Index()
         {
-            //var tickets = db.Tickets.Include(t => t.Developer).Include(t => t.Project).Include(t => t.Submitter).Include(t => t.TicketPriority).Include(t => t.TicketStatus).Include(t => t.TicketType);
-
             //What role do I occupy  
             return View(ticketHelper.ListMyTickets());
         }
@@ -37,16 +35,19 @@ namespace BugTracker.Controllers
         public ActionResult Details(int? id)
         {
             TicketDetailViewModel model = new TicketDetailViewModel();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Ticket ticket = db.Tickets.Find(id);
             ApplicationUser pm = db.Users.Find(ticket.Project.ProjectManagerId);
+
             if (ticket == null)
             {
                 return HttpNotFound();
             }
+
             model.Ticket = ticket;
             model.ProjectManager = pm;
             return View(model);
