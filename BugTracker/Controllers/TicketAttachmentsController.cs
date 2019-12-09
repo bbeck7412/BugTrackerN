@@ -79,7 +79,7 @@ namespace BugTracker.Controllers
                     }
                                      
                 }
-                return RedirectToAction("Details","Ticket", new { id = ticketAttachment.TicketId });
+                return RedirectToAction("Details","Tickets", new { id = ticketAttachment.TicketId });
             }
 
             //ViewBag.TicketId = new SelectList(db.Tickets, "Id", "SubmitterId", ticketAttachment.TicketId);
