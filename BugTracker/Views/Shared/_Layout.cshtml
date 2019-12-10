@@ -293,7 +293,7 @@ Use search to find needed section.
 
             <ul>
                 <li class="active open">
-                    <a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
+                    <a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-home" style="color:#a90329"></i> <span class="menu-item-parent">Dashboard</span></a>
                     <ul style="display: block;">
                         <li class="active">
                             <a href=@Url.Action("Index","Home") title="Dashboard"><span class="menu-item-parent"> Home </span></a>
@@ -317,7 +317,7 @@ Use search to find needed section.
                     if (User.IsInRole("Admin") | User.IsInRole("Administrator"))
                     {
                         <li>
-                            <a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent"> Admin Actions </span></a>
+                            <a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o" style="color:#a90329"></i> <span class="menu-item-parent"> Admin Actions </span></a>
                             <ul>
                                 <li>
                                     @Html.ActionLink("Manage Roles", "ManageRoles", "Admin")
@@ -335,7 +335,7 @@ Use search to find needed section.
                     if (User.IsInRole("ProjectManager"))
                     {
                         <li>
-                            <a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent"> Project Manager Actions </span></a>
+                            <a href="#"><i class="fa fa-lg fa-fw fa-table" style="color:#a90329"></i> <span class="menu-item-parent"> Project Manager Actions </span></a>
                             <ul>
                                 <li>
                                     @Html.ActionLink("Project Assignment", "ManageProjectUsers", "Admin")
@@ -347,7 +347,7 @@ Use search to find needed section.
                     if (User.IsInRole("Developer"))
                     {
                         <li>
-                            <a href="#"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent"> Developer Actions </span></a>
+                            <a href="#"><i class="fa fa-lg fa-fw fa-pencil-square-o" style="color:#a90329"></i> <span class="menu-item-parent"> Developer Actions </span></a>
                             <ul>
                                 <li>
                                     @Html.ActionLink("My Tickets","Index","Tickets")
@@ -359,7 +359,7 @@ Use search to find needed section.
                     if (User.IsInRole("Submitter"))
                     {
                         <li>
-                            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent"> Submitter Actions </span></a>
+                            <a href="#"><i class="fa fa-lg fa-fw fa-desktop" style="color:#a90329"></i> <span class="menu-item-parent"> Submitter Actions </span></a>
                             <ul>
                                 <li>
                                     @Html.ActionLink("Create Ticket","Create","Tickets")
@@ -371,7 +371,7 @@ Use search to find needed section.
                 }
 
                 <li>
-                    <a href="#"><i class="fa fa-lg fa-fw fa-ticket"></i> <span class="menu-item-parent"> Tickets </span></a>
+                    <a href="#"><i class="fa fa-lg fa-fw fa-ticket" style="color:#a90329"></i> <span class="menu-item-parent"> Tickets </span></a>
                     <ul>
                         <li>
                             @Html.ActionLink("Ticket Index", "Index", "Tickets")
@@ -381,7 +381,7 @@ Use search to find needed section.
                 </li>
 
                 <li>
-                    <a href="#"><i class="fa fa-lg fa-fw fa-ticket"></i> <span class="menu-item-parent"> Ticket History </span></a>
+                    <a href="#"><i class="fa fa-lg fa-fw fa-ticket" style="color:#a90329"></i> <span class="menu-item-parent"> Ticket History </span></a>
                     <ul>
                         <li>
                             @Html.ActionLink("Ticket History", "Index", "TicketHistories")
@@ -391,7 +391,7 @@ Use search to find needed section.
                 </li>
 
                 <li>
-                    <a href="#"><i class="fa fa-lg fa-fw fa-ticket"></i> <span class="menu-item-parent"> Ticket Notifications </span></a>
+                    <a href="#"><i class="fa fa-lg fa-fw fa-ticket" style="color:#a90329"></i> <span class="menu-item-parent"> Ticket Notifications </span></a>
                     <ul>
                         <li>
                             @Html.ActionLink("Ticket Notifications ", "Index", "TicketNotifications")
@@ -401,7 +401,7 @@ Use search to find needed section.
                 </li>
 
                 <li>
-                    <a href="#"><i class="fa fa-lg fa-fw fa-ticket"></i> <span class="menu-item-parent"> Ticket Attachments </span></a>
+                    <a href="#"><i class="fa fa-lg fa-fw fa-ticket" style="color:#a90329"></i> <span class="menu-item-parent"> Ticket Attachments </span></a>
                     <ul>
                         <li>
                             @Html.ActionLink("Ticket Attachments", "Index", "TicketAttachments")
@@ -415,7 +415,7 @@ Use search to find needed section.
 
 
         <span class="minifyme" data-action="minifyMenu">
-            <i class="fa fa-arrow-circle-left hit"></i>
+            <i class="fa fa-arrow-circle-left hit" style="color:#a90329"></i>
         </span>
 
     </aside>
@@ -428,7 +428,7 @@ Use search to find needed section.
 
             <span class="ribbon-button-alignment">
                 <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh" rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
-                    <i class="fa fa-refresh"></i>
+                    <i class="fa fa-refresh" style="color:#a90329"></i>
                 </span>
             </span>
 

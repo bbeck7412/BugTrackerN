@@ -1,28 +1,14 @@
 ﻿@model BugTracker.Models.DashboardViewModel
 
     @{
-        ViewBag.Title = "~/Views/Shared/_Layout.cshtml";
+        Layout = "~/Views/Shared/_Layout.cshtml";
     }
 
     <section id="widget-grid" class="">
-        <div class="jarviswidget jarviswidget-color-darken" id="wid-id-1" data-widget-editbutton="false">
-            <!-- widget options:
-            usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+        <div class="jarviswidget jarviswidget-color-darken" id="wid-id-1" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false">
 
-            data-widget-colorbutton="false"
-            data-widget-editbutton="false"
-            data-widget-togglebutton="false"
-            data-widget-deletebutton="false"
-            data-widget-fullscreenbutton="false"
-            data-widget-custombutton="false"
-            data-widget-collapsed="true"
-            data-widget-sortable="false"
-
-            -->
             <header>
-                <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-                <h2>Column Filters </h2>
-
+              <h2> Project List </h2>
             </header>
 
             <!-- widget div-->
@@ -78,18 +64,18 @@
                         </thead>
 
                         <tbody>
-                            @foreach (var proj in Model.Projects)
+                            @foreach (var projX in Model.Projects)
                             {
 
-                                var desc = proj.Project.Description.Length > 30 ? proj.Project.Description.Substring(0, 29) + " ..." : proj.Project.Description;
+                                var desc = projX.Project.Description.Length > 30 ? projX.Project.Description.Substring(0, 29) + " ..." : projX.Project.Description;
 
                                 <tr>
-                                    <td>@proj.Project.Name</td>
+                                    <td>@projX.Project.Name</td>
                                     <td>@desc</td>
-                                    <td>@proj.ProjectManager.DisplayName</td>
-                                    <td>@proj.Project.Created.Date.ToString("MM.dd.yyyy")</td>
-                                    <td>@proj.Project.Users.Count()</td>
-                                    <td>@proj.Project.Tickets.Count</td>
+                                    <td>@projX.ProjectManager.DisplayName</td>
+                                    <td>@projX.Project.Created.Date.ToString("MM.dd.yyyy")</td>
+                                    <td>@projX.Project.Users.Count()</td>
+                                    <td>@projX.Project.Tickets.Count</td>
 
                                 </tr>
                             }
@@ -298,21 +284,6 @@
 
         </script>
 
-        <!-- Your GOOGLE ANALYTICS CODE Below -->
-        <script>
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
-            _gaq.push(['_trackPageview']);
-
-            (function () {
-                var ga = document.createElement('script');
-                ga.type = 'text/javascript';
-                ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(ga, s);
-            })();
-        </script>
 
     }
 
