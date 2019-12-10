@@ -25,6 +25,7 @@ namespace BugTracker.Controllers
 
 
         [Authorize]
+        // HttpGet
         public ActionResult Index()
         {
             if (User.Identity.IsAuthenticated)

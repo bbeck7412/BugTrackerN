@@ -259,7 +259,14 @@
                         <!-- widget content -->
                         <div class="widget-body">
 
-                            <form action="upload.php" class="dropzone" id="mydropzone"></form>
+                            @using (Html.BeginForm("Create", "TicketAttachments", FormMethod.Post, new { enctype = "multipart/form-data", id = "mydropzone" }))
+                            { @Html.AntiForgeryToken()
+
+                                <form class="dropzone" id="mydropzone">
+                                    <button id="uploadBtn"> Upload </button>
+                                </form>
+                                
+                            }
 
                         </div>
                         <!-- end widget content -->

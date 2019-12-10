@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BugTracker.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,5 +12,7 @@ namespace BugTracker.Models
         public List<Ticket> Tickets { get; set; }
         public List<ApplicationUser> Users { get; set; }
         public ApplicationUser User { get; set; }
+        public ProjectHelper projectHelper { get; set; }
+        
     }
 }
