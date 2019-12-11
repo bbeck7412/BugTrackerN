@@ -67,15 +67,13 @@
                             @foreach (var projX in Model.Projects)
                             {
 
-                                //Model.OrderRequest.AdditionalParties[0].Address == null ? string.Empty : Model.OrderRequest.AdditionalParties[0].Address.Line1 %>
-
-                                var pmDisplay = projX.ProjectManager.DisplayName == null? string.Empty : projX.ProjectManager.DisplayName;
+                                var pmDisplay = projX.ProjectManager.DisplayName.ToString() != null ? String.Empty : projX.ProjectManager.DisplayName;
                                 var desc = projX.Project.Description.Length > 30 ? projX.Project.Description.Substring(0, 29) + " ..." : projX.Project.Description;
 
                                 <tr>
                                     <td>@projX.Project.Name</td>
                                     <td>@desc</td>
-                                    <td>@projX.ProjectManager.DisplayName</td>
+                                    <td>@pmDisplay</td>
                                     <td>@projX.Project.Created.Date.ToString("MM.dd.yyyy")</td>
                                     <td>@projX.Project.Users.Count()</td>
                                     <td>@projX.Project.Tickets.Count</td>
