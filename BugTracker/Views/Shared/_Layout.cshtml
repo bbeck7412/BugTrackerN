@@ -274,7 +274,7 @@ Use search to find needed section.
                     <img src="~/Content/img/avatars/sunny.png" alt="me" class="online" />
                     @*<img src="@UserHelper.GetAvatarPath" alt="..." class="img-circle profile-pic" />*@
 
-                    <span style="font-size:50px;">
+                    <span style="font-size:10%;">
                         @{ var user = (System.Security.Claims.ClaimsIdentity)User.Identity; }
                         @Html.ActionLink("Hello " + user.FindFirstValue("DisplayName") + "!", "ProfilePage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
                     </span>
