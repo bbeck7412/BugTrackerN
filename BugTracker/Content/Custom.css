@@ -1,0 +1,12 @@
+﻿.btn-bugTrack {
+    color: aliceblue;
+    background-color: #a90329;
+    border-color:black;
+}
+
+.btn-outline-bugTrack_outline {
+    color: #a90329;
+    background-color: transparent;
+    background-image: none;
+    border-color: #a90329;
+}

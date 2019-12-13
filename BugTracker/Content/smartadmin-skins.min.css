@@ -40,7 +40,7 @@
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#6f7d94), to(#697486));
     background-image: -webkit-linear-gradient(top, #6f7d94, #697486);
     background-image: -o-linear-gradient(top, #6f7d94, #697486);
-    background-image: linear-gradient(to bottom, #6f7d94, #697486)
+    background-image: linear-gradient(to bottom, #1b1e24, #1b1e24)
 }
 
 .smart-style-1 #logo-group {
@@ -320,8 +320,8 @@
 .smart-style-1 .pagination > .active > span,
 .smart-style-1 .pagination > .active > span:focus,
 .smart-style-1 .pagination > .active > span:hover {
-    background-color: #36AECC;
-    border-color: #36AECC
+    background-color: #a90329;
+    border-color: #a90329;
 }
 
 .smart-style-1.minified .login-info a {

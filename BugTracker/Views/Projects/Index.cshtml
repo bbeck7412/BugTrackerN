@@ -66,19 +66,20 @@
                             <th data-hide="phone,tablet"> Users on Project </th>
                             <th data-hide="phone,tablet" class="text-align-center"> Actions </th>
                         </tr>
+                        
                     </thead>
 
                     <tbody>
                         @foreach (var projX in Model.Projects)
                         {
-
+                            
                             var pmDisplay = projX.ProjectManager.DisplayName.ToString() != null ? String.Empty : projX.ProjectManager.DisplayName;
                             var desc = projX.Project.Description.Length > 30 ? projX.Project.Description.Substring(0, 29) + " ..." : projX.Project.Description;
 
                             <tr>
                                 <td>@projX.Project.Name</td>
                                 <td>@desc</td>
-                                <td>@pmDisplay</td>
+                                <td>@projX.ProjectManager.DisplayName</td>
                                 <td>@projX.Project.Created.Date.ToString("MM.dd.yyyy")</td>
                                 <td>@projX.Project.Users.Count()</td>
                                 <td>@projX.Project.Tickets.Count</td>
@@ -87,9 +88,9 @@
                                     {
                                         if (User.IsInRole("Admin") | User.IsInRole("Administrator"))
                                         {
-                                            @Html.ActionLink("Assign Users", "ManageProjectUsers", "Admin", null, new { @class = "btn btn-primary", @style = "width:100%" })
-
+                                            @Html.ActionLink("Assign Users", "ManageProjectUsers", "Admin", null, new { @class = "btn btn-bugTrack", @style = "width:100%" })
                                         }
+
                                     }
                                 </td>
 
