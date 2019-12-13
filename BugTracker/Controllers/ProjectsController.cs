@@ -15,6 +15,7 @@ namespace BugTracker.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         private ProjectHelper projectHelper = new ProjectHelper();
+        private RoleHelper roleHelper = new RoleHelper();
 
         public ActionResult ManageProjectUsers()
         {

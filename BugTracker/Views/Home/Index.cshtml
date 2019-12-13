@@ -76,11 +76,11 @@
                                 <thead>
                                     <tr>
                                         <th class="hasinput" style="width:17%">
-                                           <input type="text" class="form-control" placeholder=" Project Name " />
+                                            <input type="text" class="form-control" placeholder=" Project Name " />
                                         </th>
 
                                         <th class="hasinput" style="width:17%">
-                                            <input type="text" class="form-control" placeholder=" Project Name " />  
+                                            <input type="text" class="form-control" placeholder=" Project Name " />
                                         </th>
 
                                         <th class="hasinput" style="width:17%">
@@ -99,6 +99,17 @@
                                             <input type="text" class="form-control" placeholder=" Tickets on Project " />
                                         </th>
 
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            if (User.IsInRole("Admin") | User.IsInRole("Administrator"))
+                                            {
+
+                                                <th class="text-align-center" style="width:14%">
+                                                    <p> Project Actions </p>
+                                                </th>
+                                            }
+                                        }
+
                                     </tr>
                                     <tr>
                                         <th data-class="expand"> Project Name</th>
@@ -107,6 +118,14 @@
                                         <th data-hide="phone"> Created Date </th>
                                         <th data-hide="phone,tablet">  Users on Project </th>
                                         <th data-hide="phone,tablet"> Tickets on Project </th>
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            if (User.IsInRole("Admin") | User.IsInRole("Administrator"))
+                                            {
+                                                <th data-hide="phone,tablet" class="text-align-center"> Actions </th>
+
+                                            }
+                                        }
                                     </tr>
                                 </thead>
 
@@ -123,7 +142,16 @@
                                             <td>@proj.Project.Created.Date.ToString("MM.dd.yyyy")</td>
                                             <td>@proj.Project.Users.Count()</td>
                                             <td>@proj.Project.Tickets.Count</td>
+                                                @if (User.Identity.IsAuthenticated)
+                                                {
+                                                    if (User.IsInRole("Admin") | User.IsInRole("Administrator"))
+                                                    {
+                                                        <td>
+                                                        @Html.ActionLink("Assign Users", "ManageProjectUsers", "Admin", null, new { @class = "btn btn-bugTrack", @style = "width:100%" })
+                                                       </td>
+                                                    }
 
+                                                }
                                         </tr>
                                     }
 
