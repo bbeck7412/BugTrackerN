@@ -191,6 +191,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MorrisDonutData.cs" />
+    <Compile Include="Models\pmDropdownViewModel.cs" />
     <Compile Include="Models\Projects.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Models\ProjectViewModel.cs" />
