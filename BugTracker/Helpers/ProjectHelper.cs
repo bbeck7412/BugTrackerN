@@ -131,6 +131,12 @@ namespace BugTracker.Helpers
             }
         }
 
+        public List<ApplicationUser> UsersOnProjectByRole(int projectId, string role)
+        {
+            var roleId = db.Roles.FirstOrDefault(r => r.Name == role)?.Id;
+            return db.Projects.Find(projectId).Users.Where(u => u.Roles.Any(r => r.RoleId == roleId)).ToList();
+        }
+
         public ICollection<ApplicationUser> UsersOnProject(int projectId)
         {
             return db.Projects.Find(projectId).Users;

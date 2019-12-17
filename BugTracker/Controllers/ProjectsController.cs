@@ -94,12 +94,12 @@ namespace BugTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Description,UserId")] Project project, string projectManagerId)
         {
-
+            var pmId = User.IsInRole("ProjectManager");
             if (ModelState.IsValid)
             {
                 
                 project.Created = DateTime.Now;
-                db.Projects.Add(project.ProjectManagerId);
+                
                 //project.ProjectManagerId.ToList();
                 db.Projects.Add(project);
                 db.SaveChanges();

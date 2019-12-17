@@ -1,27 +1,21 @@
-﻿@model IEnumerable<BugTracker.Models.UserProjectListViewModel>
-@{
-    ViewBag.Title = "Manage Project Users";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿@model BugTracker.Models.ManageProjectViewModel
 
-<h2>@ViewBag.Title</h2>
+<h2>Manage Project Users</h2>
 
 <div class=" container">
     <div class="row">
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.Project.Name)
+            @Html.HiddenFor(model => model.Project.Id)
             <div class=" col-md-4">
-                @Html.ListBox("Projects", null, new { @class = "form-control" })
+                <h3>@Model.Project.Name</h3>
             </div>
 
             <div class=" col-md-1 col-md-off-1">
                 <button type="submit" class="btn btn-primary btn-lg"> Assign</button>
             </div>
-
-            @*<div class=" col-md-1 col-md-off-1">
-                <button type="reset" class="btn btn-primary btn-lg"> Remove Users </button>
-            </div>*@
 
             <div class=" col-md-4">
                 @if (User.Identity.IsAuthenticated)
@@ -30,12 +24,17 @@
                     {
                         <div class="row">
                             <div class="col-md-12">
-                                <h3> Project Manager </h3>
+                                @{ 
+                                    var pm = Model.ProjectManager == null ? "" : Model.ProjectManager.DisplayName;
+                                <h3> Project Manager:  @pm  </h3>
+
+                                }
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                @Html.DropDownList("ProjectManagerId", null, "--Select--", new { @class = "form-control" })
+                                @*@Html.DropDownList("ProjectManagers", null, "--Select--", new { @class = "form-control" })*@
+                                @Html.DropDownListFor(model => Model.ProjectManagers, null, "-- Select--", new { @class = "form-control" })
                             </div>
                         </div>
 
@@ -50,7 +49,8 @@
                 </div>
                 <div class="row">
                     <div class=" col-md-12">
-                        @Html.ListBox("Developers", null, new { @class = "form-control" })
+                        @*@Html.ListBox("Developers", null, new { @class = "form-control" })*@
+                        @Html.ListBoxFor(model => Model.MSDevs, null, new { @class = "form-control" })
                     </div>
                 </div>
 
@@ -61,7 +61,8 @@
                 </div>
                 <div class="row">
                     <div class=" col-md-12">
-                        @Html.ListBox("Submitters", null, new { @class = "form-control" })
+                        @*@Html.ListBox("Submitters", null, new { @class = "form-control" })*@
+                        @Html.ListBoxFor(model => Model.MSSubs, null, new { @class = "form-control" })
                     </div>
                 </div>
 
@@ -69,32 +70,173 @@
         }
 
     </div>
-    <div class="row">
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayName("Projects")
-                </th>
-            </tr>
 
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @foreach (var name in item.ProjectNames)
-                        {
-                            @name <br />
-                        }
-                    </td>
-                </tr>
-            }
-        </table>
-    </div>  
+    <div class="row">
+
+        <!-- Widget ID (each widget will need unique ID)-->
+        <div class="jarviswidget jarviswidget-color-darken" id="wid-id-2" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+            <!-- widget options:
+            usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+            data-widget-colorbutton="false"
+            data-widget-editbutton="false"
+            data-widget-togglebutton="false"
+            data-widget-deletebutton="false"
+            data-widget-fullscreenbutton="false"
+            data-widget-custombutton="false"
+            data-widget-collapsed="true"
+            data-widget-sortable="false"
+
+            -->
+            <header>
+                <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                <h2>Bootstrap Duallist Box </h2>
+
+            </header>
+
+            <!-- widget div-->
+            <div>
+
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox">
+                    <!-- This area used as dropdown edit box -->
+
+                </div>
+                <!-- end widget edit box -->
+                <!-- widget content -->
+
+                <div class="widget-body">
+
+                    @*@Html.ListBox("Developers", null, new { @class = "form-control", @size = 10 })*@
+
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <!-- Widget ID (each widget will need unique ID)-->
+            <div class="jarviswidget jarviswidget-color-darken" id="wid-id-2" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+                <!-- widget options:
+                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                data-widget-colorbutton="false"
+                data-widget-editbutton="false"
+                data-widget-togglebutton="false"
+                data-widget-deletebutton="false"
+                data-widget-fullscreenbutton="false"
+                data-widget-custombutton="false"
+                data-widget-collapsed="true"
+                data-widget-sortable="false"
+
+                -->
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                    <h2>Bootstrap Duallist Box </h2>
+
+                </header>
+
+                <!-- widget div-->
+                <div>
+
+                    <!-- widget edit box -->
+                    <div class="jarviswidget-editbox">
+                        <!-- This area used as dropdown edit box -->
+
+                    </div>
+                    <!-- end widget edit box -->
+                    <!-- widget content -->
+
+                    <div class="widget-body">
+
+                        <select multiple="multiple" size="10" name="duallistbox_demo2" id="initializeDuallistbox">
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                            <option value="option3" selected="selected">Option 3</option>
+                            <option value="option4">Option 4</option>
+                            <option value="option5">Option 5</option>
+                            <option value="option6" selected="selected">Option 6</option>
+                            <option value="option7">Option 7</option>
+                            <option value="option8">Option 8</option>
+                            <option value="option9">Option 9</option>
+                            <option value="option0">Option 10</option>
+                            <option value="option0">Option 11</option>
+                            <option value="option0">Option 12</option>
+                            <option value="option0">Option 13</option>
+                            <option value="option0">Option 14</option>
+                            <option value="option0">Option 15</option>
+                            <option value="option0">Option 16</option>
+                            <option value="option0">Option 17</option>
+                            <option value="option0">Option 18</option>
+                            <option value="option0">Option 19</option>
+                            <option value="option0">Option 20</option>
+                        </select>
+
+                    </div>
+                    <!-- end widget content -->
+
+                </div>
+                <!-- end widget div -->
+
+            </div>
+            <!-- end widget -->
+
+        </div>
+
+
+        @*<div class="row">
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayName("Projects")
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @foreach (var name in item.ProjectNames)
+                                {
+                                    @name <br />
+                                }
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>*@
+    </div>
 </div>
+@section scripts
+{
+    <script src="https://localhost:44391/Scripts/jquery.bootstrap-duallistbox.min.js"></script>
+    <script>
+        /*
+* BOOTSTRAP DUALLIST BOX
+*/
+
+        var initializeDuallistbox = $('#initializeDuallistbox').bootstrapDualListbox({
+            nonSelectedListLabel: 'Non-selected',
+            selectedListLabel: 'Selected',
+            preserveSelectionOnMove: 'moved',
+            moveOnSelect: false,
+            nonSelectedFilter: ''
+        });
+
+        var initializeDuallistbox = $('#Developers').bootstrapDualListbox({
+            nonSelectedListLabel: 'Available Developers',
+            selectedListLabel: 'Current Developers',
+            preserveSelectionOnMove: 'moved',
+            moveOnSelect: false,
+            nonSelectedFilter: '',
+            showFilterInputs: false
+        });
+    </script>
+}
 

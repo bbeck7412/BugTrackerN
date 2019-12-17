@@ -138,20 +138,21 @@
                                         <tr>
                                             <td>@proj.Project.Name</td>
                                             <td>@desc</td>
-                                            <td>@proj.ProjectManager.DisplayName</td>
+                                            @*<td>@proj.ProjectManager.DisplayName</td>*@
                                             <td>@proj.Project.Created.Date.ToString("MM.dd.yyyy")</td>
                                             <td>@proj.Project.Users.Count()</td>
                                             <td>@proj.Project.Tickets.Count</td>
-                                                @if (User.Identity.IsAuthenticated)
-                                                {
-                                                    if (User.IsInRole("Admin") | User.IsInRole("Administrator"))
-                                                    {
-                                                        <td>
-                                                        @Html.ActionLink("Assign Users", "ManageProjectUsers", "Admin", null, new { @class = "btn btn-bugTrack", @style = "width:100%" })
-                                                       </td>
-                                                    }
 
-                                                }
+                                            @if (User.IsInRole("Admin") | User.IsInRole("Administrator"))
+                                            {
+                                                <td>
+                                                    @Html.ActionLink("Assign Users", "ManageProjectUsers", "Admin", null, new { @class = "btn btn-bugTrack", @style = "width:100%" })
+                                                    @Html.ActionLink("Manage", "ManageProjectUsers", "Admin", new { id = proj.Project.Id }, new { @class = "btn btn-bugTrack", @style = "width:100%" })
+
+                                                </td>
+                                            }
+
+
                                         </tr>
                                     }
 

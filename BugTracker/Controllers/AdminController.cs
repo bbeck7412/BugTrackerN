@@ -66,43 +66,41 @@ namespace BugTracker.Controllers
         [Authorize(Roles = "Admin,Administrator,ProjectManager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ManageProjectUsers(List<int> projects, string projectManagerId, List <string> developers, List <string> submitters)
+        public ActionResult ManageProjectUsers(Project project, string projectmanagers, List<string> msdevs, List<string> mssubs)
         {
-
-            if(projects != null)
-            {
-                foreach (var projectId in projects)
-                {
+            
+          
                     //Remove everyone from this project
-                    foreach (var user in projectHelper.UsersOnProject(projectId).ToList())
-                    {
-                        projectHelper.RemoveUserFromProject(user.Id, projectId);
-                    }
+                    //foreach (var user in projectHelper.UsersOnProject(model.Project.Id).ToList())
+                    //{
+                    //    projectHelper.RemoveUserFromProject(user.Id, model.Project.Id);
+                    //}
                     //Add back PM if possible
-                    if (!string.IsNullOrEmpty(projectManagerId))
-                    {
-                        projectHelper.AddUserToProject(projectManagerId, projectId);
+                //    if (!string.IsNullOrEmpty(model.ProjectManager.Id))
+                //    {
+                //        //projectHelper.AddUserToProject(projectManagerId, projectId);
+                //projectHelper.AddProjectManagerToProject()
 
-                    }
+                //    }
 
-                    if (developers != null)
-                    {
-                        foreach(var developerId in developers)
-                        {
-                            projectHelper.AddUserToProject(developerId, projectId);
-                        }
-                    }
+                //    if (developers != null)
+                //    {
+                //        foreach(var developerId in developers)
+                //        {
+                //            projectHelper.AddUserToProject(developerId, projectId);
+                //        }
+                //    }
 
-                    if (submitters != null)
-                    {
-                        foreach (var submitterId in submitters)
-                        {
-                            projectHelper.AddUserToProject(submitterId, projectId);
-                        }
-                    }
+                //    if (submitters != null)
+                //    {
+                //        foreach (var submitterId in submitters)
+                //        {
+                //            projectHelper.AddUserToProject(submitterId, projectId);
+                //        }
+                //    }
                     
-                }
-            }
+            //    }
+            //}
 
             return RedirectToAction("ManageProjectUsers");
         }
@@ -110,36 +108,45 @@ namespace BugTracker.Controllers
 
         [Authorize(Roles = "Admin, ProjectManager, Administrator")]
         [HttpGet]
-        
-        public ActionResult ManageProjectUsers()
+        public ActionResult ManageProjectUsers(int? id)
         {
-            ViewBag.Projects = new MultiSelectList(db.Projects, "Id", "Name");
-            ViewBag.Developers = new MultiSelectList(roleHelper.UsersInRole("Developer"), "Id", "DisplayName");
-            ViewBag.Submitters = new MultiSelectList(roleHelper.UsersInRole("Submitter"), "Id", "DisplayName");
+            ManageProjectViewModel vm = new ManageProjectViewModel();
+            var projDevs = projectHelper.UsersOnProjectByRole(id.Value, "Developer");
+            var projSubs = projectHelper.UsersOnProjectByRole(id.Value, "Submitter");
+            
 
-            if (User.IsInRole("Admin") | User.IsInRole("Administrator"))
-            {
-                ViewBag.ProjectManagerId = new SelectList(roleHelper.UsersInRole("ProjectManager"), "Id", "DisplayName");
-            }
+            var project = db.Projects.Find(id.Value);
+            var projectManager = db.Users.Find(project.ProjectManagerId);
+            //var devs = new MultiSelectList(roleHelper.UsersInRole("Developer"), "Id", "DisplayName",projDevs.Select(u => u.Id));
+            var devs = new MultiSelectList(roleHelper.UsersInRole("Developer"), "Id", "DisplayName", projDevs.Select(u => u.Id));
 
+            var subs = new MultiSelectList(roleHelper.UsersInRole("Submitter"), "Id", "DisplayName", projSubs.Select(u => u.Id));
+            var pms = new SelectList(roleHelper.UsersInRole("ProjectManager"), "Id", "DisplayName");
 
-            var myData = new List<UserProjectListViewModel>();
-            UserProjectListViewModel userVm = null;
-            foreach(var user in db.Users.ToList())
-            {
-                userVm = new UserProjectListViewModel
-                {
-                    Name = $"{user.FirstName}, {user.LastName}",
-                    ProjectNames = projectHelper.ListUserProjects(user.Id).Select(p => p.Name).ToList()
-                };
+            //var myData = new List<UserProjectListViewModel>();
+            //UserProjectListViewModel userVm = null;
+            //foreach(var user in db.Users.ToList())
+            //{
+            //    userVm = new UserProjectListViewModel
+            //    {
+            //        Name = $"{user.FirstName}, {user.LastName}",
+            //        ProjectNames = projectHelper.ListUserProjects(user.Id).Select(p => p.Name).ToList()
+            //    };
 
-                if (userVm.ProjectNames.Count() == 0)
-                    userVm.ProjectNames.Add("N/A");
+            //    if (userVm.ProjectNames.Count() == 0)
+            //        userVm.ProjectNames.Add("N/A");
 
-                myData.Add(userVm);
-            }
+            //    myData.Add(userVm);
+            //}
 
-            return View(myData);
+            vm.Project = project;
+            vm.Developers = projDevs;
+            vm.Submitters = projSubs;
+            vm.MSDevs = devs;
+            vm.MSSubs = subs;
+            vm.ProjectManager = projectManager;
+            vm.ProjectManagers = pms;
+            return View(vm);
 
         }
 

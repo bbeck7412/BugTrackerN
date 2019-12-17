@@ -13,7 +13,7 @@ namespace BugTracker.Models
         public string ProjectManagerId { get; set; }
         public DateTime Created { get; set; }
         public DateTime? Updated { get; set; }
-
+        public ApplicationUser User { get; set; }
         public virtual ICollection<Ticket> Tickets { get; set; }
         public virtual ICollection<ApplicationUser> Users { get; set; }
 
