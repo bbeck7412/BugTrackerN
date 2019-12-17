@@ -99,7 +99,8 @@ namespace BugTracker.Controllers
             {
                 
                 project.Created = DateTime.Now;
-                project.ProjectManagerId.ToList();
+                db.Projects.Add(project.ProjectManagerId);
+                //project.ProjectManagerId.ToList();
                 db.Projects.Add(project);
                 db.SaveChanges();
                 return RedirectToAction("Index");
