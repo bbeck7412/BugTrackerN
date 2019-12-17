@@ -82,6 +82,7 @@ namespace BugTracker.Controllers
         [Authorize(Roles = "Admin,Administrator")]
         public ActionResult Create()
         {
+            ViewBag.ProjectManagerId = new SelectList(roleHelper.UsersInRole("ProjectManager"), "Id", "DisplayName");
             return View();
         }
 
@@ -91,11 +92,14 @@ namespace BugTracker.Controllers
         [HttpPost]
         [Authorize (Roles = "Admin,Administrator")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,UserId,Updated")] Project project)
+        public ActionResult Create([Bind(Include = "Id,Name,Description,UserId")] Project project, string projectManagerId)
         {
+
             if (ModelState.IsValid)
             {
+                
                 project.Created = DateTime.Now;
+                project.ProjectManagerId.ToList();
                 db.Projects.Add(project);
                 db.SaveChanges();
                 return RedirectToAction("Index");

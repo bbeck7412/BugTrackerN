@@ -9,6 +9,7 @@ namespace BugTracker.Models
     {
         public string Name { get; set; }
         public List<string> ProjectNames { get; set; }
+        
 
         public UserProjectListViewModel()
         {
