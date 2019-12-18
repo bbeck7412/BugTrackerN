@@ -66,7 +66,7 @@ namespace BugTracker.Controllers
         [Authorize(Roles = "Admin,Administrator,ProjectManager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ManageProjectUsers(Project project, string projectmanagers, List<string> msdevs, List<string> mssubs)
+        public ActionResult ManageProjectUsers(int id, string projectmanagers, List<string> msdevs, List<string> mssubs)
         {
             
           
