@@ -142,6 +142,7 @@ namespace BugTracker.Controllers
                     ModelState.AddModelError("", "The user name or password provided is incorrect.");
                     return View(model);
             }
+
         }
 
         //

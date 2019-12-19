@@ -93,6 +93,11 @@
                                         <button id="demoLogin_button--" type="submit" class="btn btn-lg btn-danger" style="text-align:center"> Admin Login </button>
                                     </div>
                                 </section>
+                                <script>
+                                    if (performance.navigation.type == 2) {
+                                        location.reload(true);
+                                    }
+                                </script>
 
                             }
                         </div>
@@ -113,6 +118,11 @@
                                         <button id="demoLogin_button--" type="submit" class="btn btn-lg btn-danger"> Project Manager Login </button>
                                     </div>
                                 </section>
+                                <script>
+                                    if (performance.navigation.type == 2) {
+                                        location.reload(true);
+                                    }
+                                </script>
                             }
                         </div>
 
@@ -120,43 +130,56 @@
 
                         @*</div>*@
 
-                        <div class="col-md-6">
-                            @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
-                            {
-                                @Html.AntiForgeryToken()
-                                @Html.Hidden("emailKey", "DemoDevEmail")
+                    <div class="col-md-6">
+                        @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.Hidden("emailKey", "DemoDevEmail")
 
-                                <section class="panel">
-                                    <header class="panel-heading bg-white">
-                                        <div class=" panel-heading-icon  mt-sm">
-                                            <img src="~/Images/femDev.jpg" />
-                                        </div>
-                                    </header>
-                                    <div class="panel-body">
-                                        <button id="demoLogin_button--" type="submit" class="btn btn-lg btn-danger"> Developer Login </button>
+                            <section class="panel">
+                                <header class="panel-heading bg-white">
+                                    <div class=" panel-heading-icon  mt-sm">
+                                        <img src="~/Images/femDev.jpg" />
                                     </div>
-                                </section>
-                            }
-                        </div>
+                                </header>
+                                <div class="panel-body">
+                                    <button id="demoLogin_button--" type="submit" class="btn btn-lg btn-danger"> Developer Login </button>
+                                </div>
+                            </section>
 
-                        <div class="col-md-6">
-                            @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
-                            {
-                                @Html.AntiForgeryToken()
-                                @Html.Hidden("emailKey", "DemoSubEmail")
+                            <script>
+                                if (performance.navigation.type == 2) {
+                                    location.reload(true);
+                                }
+                            </script>
 
-                                <section class="panel">
-                                    <header class="panel-heading bg-white">
-                                        <div class=" panel-heading-icon  mt-sm">
-                                            <img src="~/Images/Demosub.png" />
-                                        </div>
-                                    </header>
-                                    <div class="panel-body">
-                                        <button id="demoLogin_button--" type="submit" class="btn btn-lg btn-danger"> Submitter Login </button>
+                        }
+                    </div>
+
+                    <div class="col-md-6">
+                        @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.Hidden("emailKey", "DemoSubEmail")
+
+                            <section class="panel">
+                                <header class="panel-heading bg-white">
+                                    <div class=" panel-heading-icon  mt-sm">
+                                        <img src="~/Images/Demosub.png" />
                                     </div>
-                                </section>
-                            }
-                        </div>
+                                </header>
+                                <div class="panel-body">
+                                    <button id="demoLogin_button--" type="submit" class="btn btn-lg btn-danger"> Submitter Login </button>
+                                </div>
+                            </section>
+
+                            <script>
+                                if (performance.navigation.type == 2) {
+                                    location.reload(true);
+                                }
+                            </script>
+                        }
+                    </div>
                     </div>  
                 </div>
 
