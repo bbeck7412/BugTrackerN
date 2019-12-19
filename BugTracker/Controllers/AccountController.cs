@@ -67,6 +67,28 @@ namespace BugTracker.Controllers
             return View();
         }
 
+        //Get: Demo_Login 
+        [AllowAnonymous]
+        public ActionResult Demo_Login()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("DemoLogOff", "Account");
+            }
+            ViewBag.DemoAdminEmail = WebConfigurationManager.AppSettings["DemoAdminEmail"];
+            ViewBag.DemoPMEmail = WebConfigurationManager.AppSettings["DemoPmEmail"];
+            ViewBag.DemoDevEmail = WebConfigurationManager.AppSettings["DemoDevEmail"];
+            ViewBag.DemoSubEmail = WebConfigurationManager.AppSettings["DemoSubEmail"];
+            return View();
+        }
+
+        //Get: Demo_LogOff
+        public ActionResult DemoLogOff()
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("Login", "Account");
+        }
+
         //Demo Login
 
         [AllowAnonymous]
