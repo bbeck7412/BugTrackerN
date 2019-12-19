@@ -68,6 +68,17 @@ namespace BugTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ManageProjectUsers(int id, string projectmanagers, List<string> msdevs, List<string> mssubs)
         {
+            //Remove users from project if they are already on one.
+            foreach (var user in projectHelper.UsersOnProject(id).ToList())
+            {
+                projectHelper.RemoveUserFromProject(user.Id, id);
+            }
+            
+            //Add back PM if possible
+            if(!string.IsNullOrEmpty(projectmanagers))
+            {
+                projectHelper.AddProjectManagerToProject(projectmanagers, id);
+            }
             
           
                     //Remove everyone from this project
