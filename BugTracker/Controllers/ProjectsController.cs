@@ -98,8 +98,7 @@ namespace BugTracker.Controllers
             if (ModelState.IsValid)
             {
                 
-                project.Created = DateTime.Now;
-                
+                project.Created = DateTime.Now;      
                 //project.ProjectManagerId.ToList();
                 db.Projects.Add(project);
                 db.SaveChanges();
@@ -117,6 +116,7 @@ namespace BugTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Project project = db.Projects.Find(id);
             if (project == null)
             {

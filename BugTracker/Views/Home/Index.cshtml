@@ -146,9 +146,7 @@
                                             @if (User.IsInRole("Admin") | User.IsInRole("Administrator"))
                                             {
                                                 <td>
-                                                    @Html.ActionLink("Assign Users", "ManageProjectUsers", "Admin", null, new { @class = "btn btn-bugTrack", @style = "width:100%" })
                                                     @Html.ActionLink("Manage", "ManageProjectUsers", "Admin", new { id = proj.Project.Id }, new { @class = "btn btn-bugTrack", @style = "width:100%" })
-
                                                 </td>
                                             }
 
