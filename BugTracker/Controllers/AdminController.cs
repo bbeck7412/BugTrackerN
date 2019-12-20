@@ -150,6 +150,7 @@ namespace BugTracker.Controllers
             //    myData.Add(userVm);
             //}
 
+
             vm.Project = project;
             vm.Developers = projDevs;
             vm.Submitters = projSubs;
