@@ -70,9 +70,9 @@ namespace BugTracker.Controllers
         {
             //Remove users from project if they are already on one.
             foreach (var user in projectHelper.UsersOnProject(id).ToList())
-            {
-                projectHelper.RemoveUserFromProject(user.Id, id);
-            }
+            //{
+            //    projectHelper.RemoveUserFromProject(user.Id, id);
+            //}
             
             //Add back PM if possible
             if(!string.IsNullOrEmpty(projectmanagers))
@@ -86,6 +86,14 @@ namespace BugTracker.Controllers
                 foreach(var developerId in msdevs)
                 {
                     projectHelper.AddUserToProject(developerId, id);
+                }
+            }
+            
+            if (mssubs != null)
+            {
+                foreach(var submitterId in mssubs)
+                {
+                    projectHelper.AddUserToProject(submitterId, id);
                 }
             }
             
