@@ -109,7 +109,7 @@
                                         if (User.IsInRole("Admin") | User.IsInRole("Administrator") | User.IsInRole("ProjectManager"))
                                         {
                                             @Html.ActionLink("Assign Users", "ManageProjectUsers", "Admin", null, new { @class = "btn btn-bugTrack", @style = "width:45%, text-center" })
-                                            @Html.ActionLink("Delete", "Delete", "Project", null, new { @class = "btn btn-bugTrack", @style = "width:45%" })
+                                            @Html.ActionLink("Delete", "Delete", new { id = projX.Project.Id }, new { @class = "btn btn-bugTrack", @style = "width:45%" })
                                         }
 
                                     }
