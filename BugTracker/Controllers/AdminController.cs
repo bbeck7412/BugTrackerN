@@ -78,6 +78,15 @@ namespace BugTracker.Controllers
             if(!string.IsNullOrEmpty(projectmanagers))
             {
                 projectHelper.AddProjectManagerToProject(projectmanagers, id);
+                projectHelper.AddUserToProject(projectmanagers, id);
+            }
+
+            if (msdevs != null)
+            {
+                foreach(var developerId in msdevs)
+                {
+                    projectHelper.AddUserToProject(developerId, id);
+                }
             }
             
           
