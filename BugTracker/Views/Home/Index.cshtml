@@ -5,6 +5,14 @@
 
 <div id="content">
 
+    <style>
+        #sparks li span 
+        {
+            color:#1b1e24;
+            display: block;
+        }
+    </style>
+
     <div class="row">
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
             <h1 class="page-title txt-color:#1B1E24"><i class="fa-fw fa fa-home"></i> Dashboard </h1>
@@ -14,17 +22,17 @@
                 @if (User.Identity.IsAuthenticated)
                 {
                     <li class="sparks-info">
-                        <h5 style="color:#ee0707"> Projects <span class="txt-color-red"> <a href=@Url.Action("Index","Projects")> <i class="fa fa-folder-open" style="color:#ee0707"></i></a> @Model.Projects.Count </span></h5>
+                        <h5 style="color:#a90329"> Projects <span class="txt-color:#a90329"> <a href=@Url.Action("Index","Projects")> <i class="fa fa-folder-open" style="color:#a90329"></i></a> @Model.Projects.Count </span></h5>
                     </li>
 
                     <li class="sparks-info">
-                        <h5 style="color:#23c317"> Tickets <span class="txt-color-greenLight"> <a href=@Url.Action("Index","Tickets")> <i class="fa fa-ticket" style="color:#23c317"></i></a> &nbsp; @Model.Tickets.Count </span></h5>
+                        <h5 style="color:#a90329"> Tickets <span class="txt-color:#a90329"> <a href=@Url.Action("Index","Tickets")> <i class="fa fa-ticket" style="color:#a90329"></i></a> &nbsp; @Model.Tickets.Count </span></h5>
                     </li>
 
                     if (User.IsInRole("Admin") | User.IsInRole("Administrator") | User.IsInRole("ProjectManager"))
                     {
                         <li class="sparks-info">
-                            <h5 style="color:#2a46a0"> Users on projects <span class="txt-color-blue"> <a href=@Url.Action("ManageProjectUsers", "Admin")> <i class="fa fa-user" style="color:#2a46a0"></i></a> &nbsp; @Model.Users.Count </span></h5>
+                            <h5 style="color:#a90329"> Users on projects <span class="txt-color:#a90329"> <a href=@Url.Action("ManageProjectUsers", "Admin")> <i class="fa fa-user" style="color:#a90329"></i></a> &nbsp; @Model.Users.Count </span></h5>
                         </li>
                     }
                 }
