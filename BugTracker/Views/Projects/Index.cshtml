@@ -93,7 +93,7 @@
                         @foreach (var projX in Model.Projects)
                         {
 
-                            var pmDisplay = projX.ProjectManager?.DisplayName.ToString() ?? "";
+                            var pmDisplay = projX.ProjectManager?.DisplayName.ToString() ?? " Unassigned ";
                             var desc = projX.Project.Description.Length > 30 ? projX.Project.Description.Substring(0, 29) + " ..." : projX.Project.Description;
 
                             <tr>
