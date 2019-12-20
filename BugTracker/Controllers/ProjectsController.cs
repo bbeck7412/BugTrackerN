@@ -98,8 +98,6 @@ namespace BugTracker.Controllers
             if (ModelState.IsValid)
             {
                 
-                project.Created = DateTime.Now;      
-                //project.ProjectManagerId.ToList();
                 db.Projects.Add(project);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -135,6 +133,7 @@ namespace BugTracker.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 db.Entry(project).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index","Home");
