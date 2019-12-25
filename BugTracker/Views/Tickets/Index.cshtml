@@ -86,11 +86,11 @@
                         @foreach (var tick in Model)
                         {
 
-                            //var desc = tick.Description.Length > 30 ? tick.Description.Substring(0, 29) + " ..." : tick.Description;
+                            var desc = tick.Description.Length > 30 ? tick.Description.Substring(0, 29) + " ..." : tick.Description;
 
                             <tr>
                                 <td>@tick.Title</td>
-                                @*<td>@desc</td>*@
+                                <td>@desc</td>
                                 <td>@tick.TicketPriority.Name</td>
                                 <td>@tick.TicketType.Name</td>
                                 <td>@tick.TicketStatus.Name</td>
